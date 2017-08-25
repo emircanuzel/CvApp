@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      CV APP
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <ion-card>
+  <ion-card-header text-center>
+   CV Başlıkları
+  </ion-card-header>
+
+<br><br>
+ 
+    <button ion-item (click)="openModalKisisel()" >
+      <ion-icon name="ios-person" item-start></ion-icon>
+      Kişisel
+    </button>
+<br>    
+    <button ion-item (click)="openModalEgitim()" >
+      <ion-icon name="ios-school" item-start></ion-icon>
+      Eğitim
+    </button>
+<br>
+      <button ion-item (click)="openModalIs()">
+      <ion-icon name="ios-briefcase" item-start></ion-icon>
+      İş
+    </button>
+<br>
+<button ion-item (click)="openModalProje()">
+      <ion-icon name="ios-folder-open" item-start></ion-icon>
+      Projeler
+    </button>
+    <br>
+        <button ion-item (click)="openModalSosyal()">
+      <ion-icon name="ios-information-circle" item-start></ion-icon>
+      Sosyal
+    </button>
+    <br>
+     <button ion-item (click)="openModalFoto()">
+      <ion-icon name="ios-camera" item-start></ion-icon>
+      Fotoğraf
+    </button>
+<br>
+ 
+
+
+ 
+</ion-card>
+  <button ion-button block >Onayla</button>
+</ion-content>
