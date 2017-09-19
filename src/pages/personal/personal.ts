@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the PersonalPage page.
@@ -14,13 +15,31 @@ import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angula
   templateUrl: 'personal.html',
 })
 export class PersonalPage {
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController) {
+  personalInformation: any = {};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController,public formBuilder: FormBuilder) {
+
+  this.personalInformation = this.formBuilder.group({
+    Ad:['',Validators.required],
+    Soyad:['',],
+    TCno:['',Validators.required,Validators.maxLength(11)],
+    Telno:['',Validators.maxLength(10)],
+    Adres:['',],
+    DTarih:['',],
+    Mail:['',],
+    Cinsiyet:['',]
+
+
+  });
   }
 
-  closeModal(){
+ 
 
-    this.view.dismiss();
+  closeModal(){
+    const personalData = this.personalInformation.value;
+    this.view.dismiss(personalData);
   }
 
   ionViewDidLoad() {

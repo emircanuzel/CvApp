@@ -45,6 +45,7 @@ PersonalPageModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PersonalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,6 +57,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the PersonalPage page.
  *
@@ -63,13 +65,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var PersonalPage = (function () {
-    function PersonalPage(navCtrl, navParams, view) {
+    function PersonalPage(navCtrl, navParams, view, formBuilder) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.view = view;
+        this.formBuilder = formBuilder;
+        this.personalInformation = {};
+        this.personalInformation = this.formBuilder.group({
+            Ad: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            Soyad: ['',],
+            TCno: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(11)],
+            Telno: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(10)],
+            Adres: ['',],
+            DTarih: ['',],
+            Mail: ['',],
+            Cinsiyet: ['',]
+        });
     }
     PersonalPage.prototype.closeModal = function () {
-        this.view.dismiss();
+        var personalData = this.personalInformation.value;
+        this.view.dismiss(personalData);
     };
     PersonalPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad PersonalPage');
@@ -79,9 +94,9 @@ var PersonalPage = (function () {
 PersonalPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-personal',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Documents\GitHub\CvApp\src\pages\personal\personal.html"*/'<!--\n  Generated template for the PersonalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Kişisel</ion-title>\n    <ion-buttons end>\n       <button ion-button (click)="closeModal()" >Close</button> \n       </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Documents\GitHub\CvApp\src\pages\personal\personal.html"*/,
+        selector: 'page-personal',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\personal\personal.html"*/'<!--\n\n  Generated template for the PersonalPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Kişisel</ion-title>\n\n    <ion-buttons end>\n\n       <button ion-button (click)="closeModal()" >Close</button> \n\n       </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n     \n\n<form [formGroup]="personalInformation" (ngSubmit)="closeModal()" novalidate>\n\n\n\n\n\n<ion-list>\n\n\n\n  <ion-item>\n\n\n\n      <ion-label floating>Ad</ion-label>\n\n    <ion-input type="text" value="" ></ion-input>\n\n  </ion-item>\n\n\n\n <ion-item>\n\n    <ion-label floating>Soyad</ion-label>\n\n    <ion-input type="text" value="" ></ion-input>\n\n  </ion-item>\n\n\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n</form>\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\personal\personal.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
 ], PersonalPage);
 
 //# sourceMappingURL=personal.js.map

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController, ModalController, Modal } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -10,54 +10,58 @@ export class HomePage {
   constructor(public navCtrl: NavController , private modal:ModalController) {
 
   }
+    public personalDatas: any = {};
 
   openModalKisisel(){
 
-    const myModal = this.modal.create('PersonalPage')
+    const Personal: Modal = this.modal.create('PersonalPage')
 
-    myModal.present();
+    Personal.present();
 
+     Personal.onDidDismiss((personalData) => {
+      this.personalDatas=personalData;
+    });
   }
   openModalEgitim(){
 
 
-const myModal = this.modal.create('EducationPage')
+const Egitim = this.modal.create('EducationPage')
 
-    myModal.present();
+    Egitim.present();
 
 
   }
   openModalIs(){
 
 
-const myModal = this.modal.create('WorkPage')
+const Is = this.modal.create('WorkPage')
 
-    myModal.present();
+    Is.present();
 
   }
   openModalProje(){
 
-const myModal = this.modal.create('ProjectPage')
+const Proje = this.modal.create('ProjectPage')
 
-    myModal.present();
+    Proje.present();
 
   }
 
 openModalSosyal(){
 
 
-const myModal = this.modal.create('SocialPage')
+const Sosyal = this.modal.create('SocialPage')
 
-    myModal.present();
+    Sosyal.present();
 
 
 }
 openModalFoto(){
 
 
-const myModal = this.modal.create('PhotoPage')
+const Foto = this.modal.create('PhotoPage')
 
-    myModal.present();
+    Foto.present();
 
 }
 
