@@ -18,7 +18,8 @@
 
 <ion-content padding>
 
-
+    
+<form [formGroup]="educationInformation" (ngSubmit)="closeModal()" novalidate>
 
 <ion-list>
 
@@ -28,30 +29,30 @@
 
     <ion-item>
         <ion-label floating>Adı</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="LAd" formControlName="LAd" ></ion-input>
     </ion-item>
 
 
          <ion-item>
         <ion-label floating>Türü</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value=""  name="LTürü" formControlName="LTürü"   ></ion-input>
     </ion-item>
 
                        <ion-item>
                       <ion-label floating>Başlangıç Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="LBaTarih" formControlName="LBaTarih" ></ion-datetime>
                     </ion-item>
 
                        <ion-item>
                       <ion-label floating>Bitiş Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="LBiTarih" formControlName="LBiTarih"></ion-datetime>
                     </ion-item>
 
 
 
               <ion-item>
                 <ion-label floating>Ortalaması</ion-label>
-                <ion-input type="number" value="" ></ion-input>
+                <ion-input type="number" value="" name="LOrtalama" formControlName="LOrtalama"  ></ion-input>
               </ion-item>
 
 
@@ -68,30 +69,30 @@
 
     <ion-item>
         <ion-label floating>Adı</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="UAd" formControlName="UAd" ></ion-input>
     </ion-item>
 
 
          <ion-item>
         <ion-label floating>Bölümü</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="UTürü" formControlName="UTürü"  ></ion-input>
     </ion-item>
 
                        <ion-item>
                       <ion-label floating>Başlangıç Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="UBaTarih" formControlName="UBaTarih"></ion-datetime>
                     </ion-item>
 
                        <ion-item>
                       <ion-label floating>Bitiş Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="UBiTarih" formControlName="UBiTarih"></ion-datetime>
                     </ion-item>
 
 
 
               <ion-item>
                 <ion-label floating>Ortalaması</ion-label>
-                <ion-input type="number" value="" ></ion-input>
+                <ion-input type="number" value="" name="UOrtalama" formControlName="UOrtalama"></ion-input>
               </ion-item>
 
 
@@ -108,30 +109,30 @@
 
     <ion-item>
         <ion-label floating>Adı</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="YAd" formControlName="YAd" ></ion-input>
     </ion-item>
 
 
          <ion-item>
         <ion-label floating>Yüksek Lisans Konusu</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value=""  name="YTürü" formControlName="YTürü" ></ion-input>
     </ion-item>
 
                        <ion-item>
                       <ion-label floating>Başlangıç Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY" name="YBaTarih" formControlName="YBaTarih"></ion-datetime>
                     </ion-item>
 
                        <ion-item>
                       <ion-label floating>Bitiş Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="YBiTarih" formControlName="YBiTarih" ></ion-datetime>
                     </ion-item>
 
 
       </ion-list>
 
 
-
+</form>
 
 
 </ion-content>

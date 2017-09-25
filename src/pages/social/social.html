@@ -21,6 +21,8 @@
 
   
 
+   
+<form [formGroup]="socialInformation" (ngSubmit)="closeModal()" novalidate>
 
 
 
@@ -30,22 +32,22 @@
 <h3 align="center">Sosyal Medya</h3>
 <ion-item>
         <ion-label floating> <ion-icon name="logo-skype"></ion-icon> Skype</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="Skype" formControlName="Skype" ></ion-input>
     </ion-item>
 
 <ion-item>
         <ion-label floating>  <ion-icon name="logo-linkedin"></ion-icon> Linkedin</ion-label> 
          
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="Linkedin" formControlName="Linkedin" ></ion-input>
     </ion-item>
         
 <ion-item>
         <ion-label floating> <ion-icon name="logo-github"></ion-icon>  GitHub</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value=""  name="GitHub" formControlName="GitHub"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label floating>   <ion-icon name="logo-instagram"></ion-icon>  İnstagram</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="Instagram" formControlName="Instagram" ></ion-input>
     </ion-item>
     
         
@@ -53,7 +55,7 @@
 
     <ion-item>
         <ion-label floating>  <ion-icon name="color-palette"></ion-icon>  Hobiler</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="Hobiler" formControlName="Hobiler" ></ion-input>
     </ion-item>
                       
 
@@ -61,6 +63,6 @@
 </ion-list>
 
 
-
+</form>
 
 </ion-content>

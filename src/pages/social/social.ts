@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the SocialPage page.
@@ -15,12 +16,32 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class SocialPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController) {
+
+ socialInformation: any = {};
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController ,public formBuilder: FormBuilder) {
+
+    
+ this.socialInformation = this.formBuilder.group({
+    Skype:['',],
+   Linkedin:['',],
+    GitHub:['',],    
+    Instagram:['',],   
+    Hobiler:['',],
+    
+    
+  
+  
+
+
+  });
   }
  closeModal(){
-
-    this.view.dismiss();
+const socialData = this.socialInformation.value;
+    this.viewCtrl.dismiss(socialData);
   }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad SocialPage');
   }

@@ -24,7 +24,7 @@ export class PersonalPage {
   this.personalInformation = this.formBuilder.group({
     Ad:['',Validators.required],
     Soyad:['',],
-    TCno:['',Validators.required,Validators.maxLength(11)],
+    TCno:['',],
     Telno:['',Validators.maxLength(10)],
     Adres:['',],
     DTarih:['',],

@@ -45,6 +45,7 @@ EducationPageModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EducationPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,6 +57,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the EducationPage page.
  *
@@ -63,13 +65,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var EducationPage = (function () {
-    function EducationPage(navCtrl, navParams, view) {
+    function EducationPage(navCtrl, navParams, viewCtrl, formBuilder) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.view = view;
+        this.viewCtrl = viewCtrl;
+        this.formBuilder = formBuilder;
+        this.educationInformation = {};
+        this.educationInformation = this.formBuilder.group({
+            LAd: ['',],
+            LTürü: ['',],
+            LBaTarih: ['',],
+            LBiTarih: ['',],
+            LOrtalama: ['',],
+            UAd: ['',],
+            UTürü: ['',],
+            UBaTarih: ['',],
+            UBiTarih: ['',],
+            UOrtalama: ['',],
+            YAd: ['',],
+            YTürü: ['',],
+            YBaTarih: ['',],
+            YBiTarih: ['',],
+        });
     }
     EducationPage.prototype.closeModal = function () {
-        this.view.dismiss();
+        var educationData = this.educationInformation.value;
+        this.viewCtrl.dismiss(educationData);
     };
     EducationPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad EducationPage');
@@ -79,9 +100,9 @@ var EducationPage = (function () {
 EducationPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-education',template:/*ion-inline-start:"C:\Users\pcb\Desktop\CvApp\src\pages\education\education.html"*/'<!--\n\n  Generated template for the EducationPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>education</ion-title>\n\n    <ion-buttons end>\n\n       <button ion-button (click)="closeModal()" >Close</button> \n\n       </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n\n\n\n\n<ion-list>\n\n\n\n  <h3 align="center">Lise</h3>\n\n\n\n\n\n\n\n    <ion-item>\n\n        <ion-label floating>Adı</ion-label>\n\n      <ion-input type="text" value="" ></ion-input>\n\n    </ion-item>\n\n\n\n\n\n         <ion-item>\n\n        <ion-label floating>Türü</ion-label>\n\n      <ion-input type="text" value="" ></ion-input>\n\n    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Başlangıç Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Bitiş Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n\n\n\n\n              <ion-item>\n\n                <ion-label floating>Ortalaması</ion-label>\n\n                <ion-input type="number" value="" ></ion-input>\n\n              </ion-item>\n\n\n\n\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n\n\n<ion-list>\n\n\n\n  <h3 align="center"> Üniversite(Lisans)</h3>\n\n\n\n\n\n    <ion-item>\n\n        <ion-label floating>Adı</ion-label>\n\n      <ion-input type="text" value="" ></ion-input>\n\n    </ion-item>\n\n\n\n\n\n         <ion-item>\n\n        <ion-label floating>Bölümü</ion-label>\n\n      <ion-input type="text" value="" ></ion-input>\n\n    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Başlangıç Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Bitiş Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n\n\n\n\n              <ion-item>\n\n                <ion-label floating>Ortalaması</ion-label>\n\n                <ion-input type="number" value="" ></ion-input>\n\n              </ion-item>\n\n\n\n\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n\n\n\n\n<ion-list>\n\n  <h3 align="center">Yüksek Lisans</h3>\n\n\n\n\n\n    <ion-item>\n\n        <ion-label floating>Adı</ion-label>\n\n      <ion-input type="text" value="" ></ion-input>\n\n    </ion-item>\n\n\n\n\n\n         <ion-item>\n\n        <ion-label floating>Yüksek Lisans Konusu</ion-label>\n\n      <ion-input type="text" value="" ></ion-input>\n\n    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Başlangıç Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Bitiş Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n\n\n      </ion-list>\n\n\n\n\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\pcb\Desktop\CvApp\src\pages\education\education.html"*/,
+        selector: 'page-education',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\education\education.html"*/'<!--\n\n  Generated template for the EducationPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>education</ion-title>\n\n    <ion-buttons end>\n\n       <button ion-button (click)="closeModal()" >Close</button> \n\n       </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n    \n\n<form [formGroup]="educationInformation" (ngSubmit)="closeModal()" novalidate>\n\n\n\n<ion-list>\n\n\n\n  <h3 align="center">Lise</h3>\n\n\n\n\n\n\n\n    <ion-item>\n\n        <ion-label floating>Adı</ion-label>\n\n      <ion-input type="text" value="" name="LAd" formControlName="LAd" ></ion-input>\n\n    </ion-item>\n\n\n\n\n\n         <ion-item>\n\n        <ion-label floating>Türü</ion-label>\n\n      <ion-input type="text" value=""  name="LTürü" formControlName="LTürü"   ></ion-input>\n\n    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Başlangıç Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY"  name="LBaTarih" formControlName="LBaTarih" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Bitiş Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY"  name="LBiTarih" formControlName="LBiTarih"></ion-datetime>\n\n                    </ion-item>\n\n\n\n\n\n\n\n              <ion-item>\n\n                <ion-label floating>Ortalaması</ion-label>\n\n                <ion-input type="number" value="" name="LOrtalama" formControlName="LOrtalama"  ></ion-input>\n\n              </ion-item>\n\n\n\n\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n\n\n<ion-list>\n\n\n\n  <h3 align="center"> Üniversite(Lisans)</h3>\n\n\n\n\n\n    <ion-item>\n\n        <ion-label floating>Adı</ion-label>\n\n      <ion-input type="text" value="" name="UAd" formControlName="UAd" ></ion-input>\n\n    </ion-item>\n\n\n\n\n\n         <ion-item>\n\n        <ion-label floating>Bölümü</ion-label>\n\n      <ion-input type="text" value="" name="UTürü" formControlName="UTürü"  ></ion-input>\n\n    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Başlangıç Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY"  name="UBaTarih" formControlName="UBaTarih"></ion-datetime>\n\n                    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Bitiş Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY"  name="UBiTarih" formControlName="UBiTarih"></ion-datetime>\n\n                    </ion-item>\n\n\n\n\n\n\n\n              <ion-item>\n\n                <ion-label floating>Ortalaması</ion-label>\n\n                <ion-input type="number" value="" name="UOrtalama" formControlName="UOrtalama"></ion-input>\n\n              </ion-item>\n\n\n\n\n\n</ion-list>\n\n\n\n\n\n\n\n\n\n\n\n\n\n<ion-list>\n\n  <h3 align="center">Yüksek Lisans</h3>\n\n\n\n\n\n    <ion-item>\n\n        <ion-label floating>Adı</ion-label>\n\n      <ion-input type="text" value="" name="YAd" formControlName="YAd" ></ion-input>\n\n    </ion-item>\n\n\n\n\n\n         <ion-item>\n\n        <ion-label floating>Yüksek Lisans Konusu</ion-label>\n\n      <ion-input type="text" value=""  name="YTürü" formControlName="YTürü" ></ion-input>\n\n    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Başlangıç Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY" name="YBaTarih" formControlName="YBaTarih"></ion-datetime>\n\n                    </ion-item>\n\n\n\n                       <ion-item>\n\n                      <ion-label floating>Bitiş Tarihi</ion-label>\n\n                      <ion-datetime displayFormat="DD/MM/YYYY"  name="YBiTarih" formControlName="YBiTarih" ></ion-datetime>\n\n                    </ion-item>\n\n\n\n\n\n      </ion-list>\n\n\n\n\n\n</form>\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\education\education.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]])
 ], EducationPage);
 
 //# sourceMappingURL=education.js.map

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the EducationPage page.
@@ -14,13 +15,43 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'education.html',
 })
 export class EducationPage {
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private view: ViewController) {
+  educationInformation: any = {};
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private viewCtrl:ViewController ,public formBuilder: FormBuilder) {
+
+
+ this.educationInformation = this.formBuilder.group({
+    LAd:['',],
+   LTürü:['',],
+    LBaTarih:['',],    
+    LBiTarih:['',],   
+    LOrtalama:['',],
+    
+     UAd:['',],
+   UTürü:['',],
+    UBaTarih:['',],    
+    UBiTarih:['',],   
+    UOrtalama:['',],
+      
+      YAd:['',],
+  YTürü:['',],
+   YBaTarih:['',],    
+    YBiTarih:['',],   
+   
+  
+  
+  
+
+
+  });
+
   }
 
  closeModal(){
-
-    this.view.dismiss();
+  const educationData = this.educationInformation.value;
+    this.viewCtrl.dismiss(educationData);
   }
   
   ionViewDidLoad() {

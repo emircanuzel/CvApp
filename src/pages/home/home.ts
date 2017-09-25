@@ -11,6 +11,8 @@ export class HomePage {
 
   }
     public personalDatas: any = {};
+    public educationDatas: any ={};
+    public socialDatas: any ={};
 
   openModalKisisel(){
 
@@ -25,10 +27,12 @@ export class HomePage {
   openModalEgitim(){
 
 
-const Egitim = this.modal.create('EducationPage')
+const Egitim:Modal = this.modal.create('EducationPage')
 
     Egitim.present();
-
+Egitim.onDidDismiss((educationData)=> {
+  this.educationDatas=educationData;
+});
 
   }
   openModalIs(){
@@ -50,11 +54,12 @@ const Proje = this.modal.create('ProjectPage')
 openModalSosyal(){
 
 
-const Sosyal = this.modal.create('SocialPage')
+const Sosyal:Modal = this.modal.create('SocialPage')
 
     Sosyal.present();
-
-
+Sosyal.onDidDismiss((socialData)=> {
+  this.socialDatas=socialData;
+});
 }
 openModalFoto(){
 
@@ -62,6 +67,15 @@ openModalFoto(){
 const Foto = this.modal.create('PhotoPage')
 
     Foto.present();
+
+}
+
+openOnayla(){
+
+
+console.log(this.personalDatas);
+console.log(this.educationDatas);
+console.log(this.socialDatas);
 
 }
 
