@@ -17,5 +17,149 @@
 
 
 <ion-content padding>
-emircan
+
+<ion-list>
+
+
+ <h3 align="center">Deneyim</h3>
+
+
+    <ion-item>
+        <ion-label floating>Şirket Adı</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+      <ion-item>
+                      <ion-label floating>Başlagıç Tarihi</ion-label>
+                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                    </ion-item>
+
+                      <ion-item>
+                      <ion-label floating>Bitiş Tarihi</ion-label>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  ></ion-datetime>
+                    </ion-item>
+
+
+    <ion-item>
+        <ion-label floating>Firmadaki Pozisyonu</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+<ion-item>
+        <ion-label floating>İş Tanımı</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+<ion-item>
+        <ion-label floating>Şirketin Bulunduğu İl</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+
+
+
+
+<button ion-button icon-start round (click)="onButtonClick()">
+  <ion-icon name="md-add-circle"></ion-icon>
+  Deneyim Ekle
+</button>
+
+
+
+
+ <br><br>
+
+<div *ngIf="buttonClicked">
+
+   <h3 align="center">2.Deneyim</h3>
+
+
+    <ion-item>
+        <ion-label floating>Şirket Adı</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+      <ion-item>
+                      <ion-label floating>Başlagıç Tarihi</ion-label>
+                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                    </ion-item>
+
+                      <ion-item>
+                      <ion-label floating>Bitiş Tarihi</ion-label>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  ></ion-datetime>
+                    </ion-item>
+
+
+    <ion-item>
+        <ion-label floating>Firmadaki Pozisyonu</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+<ion-item>
+        <ion-label floating>İş Tanımı</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+<ion-item>
+        <ion-label floating>Şirketin Bulunduğu İl</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+
+
+
+
+
+<button ion-button icon-start round (click)="onButtonClick()">
+  <ion-icon name="md-add-circle"></ion-icon>
+  Deneyim Ekle 2
+</button>
+
+
+
+
+ <br><br>
+</div>
+<ion-item>
+  <ion-label>Yabancı Dil</ion-label>
+  <ion-select  multiple="true">
+    <ion-option>İngilizce</ion-option>
+    <ion-option>Fransızca</ion-option>
+    <ion-option>Almanca</ion-option>
+    <ion-option>Çince </ion-option>
+    <ion-option>İspanyolca </ion-option>
+    <ion-option>Hintçe </ion-option>
+    <ion-option>Arapça </ion-option>
+    <ion-option>Portekizce  </ion-option>
+    <ion-option>Rusça  </ion-option>
+    <ion-option>Japonca </ion-option>
+    <ion-option>Portekizce </ion-option>
+    <ion-option>İtalyanca </ion-option>
+  </ion-select>
+</ion-item>
+<br>
+
+<ion-item>
+        <ion-label floating>Yetenekler</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+<br>
+
+
+<ion-item>
+        <ion-label floating>Sertifika</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+</ion-list>
+
+
 </ion-content>

@@ -17,6 +17,15 @@ export class WorkPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController) {
   }
+
+
+  public buttonClicked: boolean = false;
+  
+  public onButtonClick() {
+    this.buttonClicked = !this.buttonClicked;
+  }
+
+
  closeModal(){
 
     this.view.dismiss();
