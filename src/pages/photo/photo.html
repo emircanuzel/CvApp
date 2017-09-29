@@ -18,4 +18,22 @@
 
 <ion-content padding>
 
+  <h1> {{parameter1}} </h1>
+  <h1> {{parameter2}} </h1>
+
+  <button ion-button full (click)="takePhoto()">
+  <ion-icon name="camera"></ion-icon>Open Camera</button>
+
+  <ion-grid>
+    <ion-row align-items-start>
+
+      <ion-col *ngFor="let photo of photos;let id=index">
+        <ion-card class="block">
+          <ion-icon name="trash" class="deletePhoto" (click)="deletePhoto(id)"></ion-icon>
+          <img [src]="photo" *ngIf="photo" />
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
