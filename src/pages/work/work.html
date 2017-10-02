@@ -18,6 +18,8 @@
 
 <ion-content padding>
 
+
+    <form [formGroup]="workInformation" (ngSubmit)="closeModal()" novalidate>
 <ion-list>
 
 
@@ -26,101 +28,161 @@
 
     <ion-item>
         <ion-label floating>Şirket Adı</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="SAd" formControlName="SAd"></ion-input>
     </ion-item>
 
 
       <ion-item>
                       <ion-label floating>Başlagıç Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="BaTarih" formControlName="BaTarih" ></ion-datetime>
                     </ion-item>
 
                       <ion-item>
                       <ion-label floating>Bitiş Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY"  ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY" name="BiTarih" formControlName="BiTarih" ></ion-datetime>
                     </ion-item>
 
 
     <ion-item>
         <ion-label floating>Firmadaki Pozisyonu</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="FPozisyon" formControlName="FPozisyon"></ion-input>
     </ion-item>
 
 
 <ion-item>
         <ion-label floating>İş Tanımı</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="Tanım" formControlName="Tanım"></ion-input>
     </ion-item>
 
 
 <ion-item>
         <ion-label floating>Şirketin Bulunduğu İl</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="Il" formControlName="Il"></ion-input>
     </ion-item>
 
+  </ion-list>
 
-
-
-
-
-<button ion-button icon-start round (click)="onButtonClick()">
-  <ion-icon name="md-add-circle"></ion-icon>
-  Deneyim Ekle
-</button>
-
+  </form>
+  
+  <ion-list>
+  <button ion-button icon-start round (click)="onButtonClick()">
+    <ion-icon name="md-add-circle"></ion-icon>
+    Deneyim Ekle
+  </button>
+  </ion-list>
+  
+  
+  <form [formGroup]="workInformation" (ngSubmit)="closeModal()" novalidate>
+      <ion-list>
+  <br><br>
+  
+  <div *ngIf="buttonClicked">
+    
+    <h3 align="center">2.Deneyim</h3>
+    
+    
+    <ion-item>
+      <ion-label floating>Şirket Adı</ion-label>
+      <ion-input type="text" value="" name="SAd2" formControlName="SAd2"></ion-input>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label floating>Başlagıç Tarihi</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" name="BaTarih2" formControlName="BaTarih2" ></ion-datetime>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Bitiş Tarihi</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY"  name="BiTarih2" formControlName="BiTarih2" ></ion-datetime>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label floating>Firmadaki Pozisyonu</ion-label>
+      <ion-input type="text" value="" name="FPozisyon2" formControlName="FPozisyon2"></ion-input>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label floating>İş Tanımı</ion-label>
+      <ion-input type="text" value="" name="Tanım2" formControlName="Tanım2"></ion-input>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-label floating>Şirketin Bulunduğu İl</ion-label>
+      <ion-input type="text" value="" name="Il2" formControlName="Il2"></ion-input>
+    </ion-item>
+    
+    
+    
+    
+  </div>
+  
+</ion-list>
+  </form>
+  <ion-list> 
+      <div *ngIf="buttonClicked">
+  <button ion-button icon-start round (click)="Deneyimekle()">
+      <ion-icon name="md-add-circle"></ion-icon>
+      Deneyim Ekle 
+    </button>
+      </div>
+  </ion-list>
 
 
 
  <br><br>
 
-<div *ngIf="buttonClicked">
 
-   <h3 align="center">2.Deneyim</h3>
+
+ <form [formGroup]="workInformation" (ngSubmit)="closeModal()" novalidate>
+    <ion-list>
+
+
+<div *ngIf="kontrol">
+
+   <h3 align="center">3.Deneyim</h3>
 
 
     <ion-item>
         <ion-label floating>Şirket Adı</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="SAd3" formControlName="SAd3"></ion-input>
     </ion-item>
 
 
       <ion-item>
                       <ion-label floating>Başlagıç Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY" ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY"  name="BaTarih3" formControlName="BaTarih3" ></ion-datetime>
                     </ion-item>
 
                       <ion-item>
                       <ion-label floating>Bitiş Tarihi</ion-label>
-                      <ion-datetime displayFormat="DD/MM/YYYY"  ></ion-datetime>
+                      <ion-datetime displayFormat="DD/MM/YYYY" name="BiTarih3" formControlName="BiTarih3" ></ion-datetime>
                     </ion-item>
 
 
     <ion-item>
         <ion-label floating>Firmadaki Pozisyonu</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value=""  name="FPozisyon3" formControlName="FPozisyon3"></ion-input>
     </ion-item>
 
 
 <ion-item>
         <ion-label floating>İş Tanımı</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="Tanım3" formControlName="Tanım3"></ion-input>
     </ion-item>
 
 
 <ion-item>
         <ion-label floating>Şirketin Bulunduğu İl</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="Il3" formControlName="Il3"></ion-input>
     </ion-item>
 
 
 
 
-
-
-<button ion-button icon-start round (click)="onButtonClick()">
-  <ion-icon name="md-add-circle"></ion-icon>
-  Deneyim Ekle 2
-</button>
 
 
 
@@ -129,7 +191,7 @@
 </div>
 <ion-item>
   <ion-label>Yabancı Dil</ion-label>
-  <ion-select  multiple="true">
+  <ion-select  multiple="true"  name="YDil" formControlName="YDil">
     <ion-option>İngilizce</ion-option>
     <ion-option>Fransızca</ion-option>
     <ion-option>Almanca</ion-option>
@@ -148,7 +210,7 @@
 
 <ion-item>
         <ion-label floating>Yetenekler</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value=""  name="Yetenek" formControlName="Yetenek"></ion-input>
     </ion-item>
 
 <br>
@@ -157,10 +219,10 @@
 
 <ion-item>
         <ion-label floating>Sertifika</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input type="text" value="" name="Sertifika" formControlName="Sertifika"></ion-input>
     </ion-item>
 
 </ion-list>
-
-
+   
+ </form>
 </ion-content>

@@ -87,6 +87,7 @@ var HomePage = (function () {
         this.personalDatas = {};
         this.educationDatas = {};
         this.socialDatas = {};
+        this.workDatas = {};
     }
     HomePage.prototype.openModalKisisel = function () {
         var _this = this;
@@ -105,8 +106,12 @@ var HomePage = (function () {
         });
     };
     HomePage.prototype.openModalIs = function () {
+        var _this = this;
         var Is = this.modal.create('WorkPage');
         Is.present();
+        Is.onDidDismiss(function (workData) {
+            _this.workDatas = workData;
+        });
     };
     HomePage.prototype.openModalProje = function () {
         var Proje = this.modal.create('ProjectPage');
@@ -128,6 +133,7 @@ var HomePage = (function () {
         console.log(this.personalDatas);
         console.log(this.educationDatas);
         console.log(this.socialDatas);
+        console.log(this.workDatas);
     };
     return HomePage;
 }());

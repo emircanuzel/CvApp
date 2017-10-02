@@ -13,6 +13,7 @@ export class HomePage {
     public personalDatas: any = {};
     public educationDatas: any ={};
     public socialDatas: any ={};
+    public workDatas: any ={};
 
   openModalKisisel(){
 
@@ -38,9 +39,12 @@ Egitim.onDidDismiss((educationData)=> {
   openModalIs(){
 
 
-const Is = this.modal.create('WorkPage')
+const Is:Modal = this.modal.create('WorkPage')
 
     Is.present();
+    Is.onDidDismiss((workData)=> {
+      this.workDatas=workData;
+    });
 
   }
   openModalProje(){
@@ -76,6 +80,7 @@ openOnayla(){
 console.log(this.personalDatas);
 console.log(this.educationDatas);
 console.log(this.socialDatas);
+console.log(this.workDatas);
 
 }
 
