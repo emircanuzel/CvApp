@@ -14,6 +14,8 @@ export class HomePage {
     public educationDatas: any ={};
     public socialDatas: any ={};
     public workDatas: any ={};
+      public projectDatas: any ={};
+      public photoDatas: any ={};
 
   openModalKisisel(){
 
@@ -52,6 +54,9 @@ const Is:Modal = this.modal.create('WorkPage')
 const Proje = this.modal.create('ProjectPage')
 
     Proje.present();
+     Proje.onDidDismiss((projectData)=> {
+      this.projectDatas=projectData;
+    });
 
   }
 
@@ -71,6 +76,9 @@ openModalFoto(){
 const Foto = this.modal.create('PhotoPage')
 
     Foto.present();
+    Foto.onDidDismiss((photoData)=> {
+  this.photoDatas=photoData;
+});
 
 }
 
@@ -81,6 +89,8 @@ console.log(this.personalDatas);
 console.log(this.educationDatas);
 console.log(this.socialDatas);
 console.log(this.workDatas);
+console.log(this.projectDatas);
+console.log(this.photoDatas);
 
 }
 

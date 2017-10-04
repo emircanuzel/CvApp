@@ -17,28 +17,149 @@
 
 
 <ion-content padding>
+ <form [formGroup]="projectInformation" (ngSubmit)="closeModal()" novalidate>
+<ion-list>
 
 
-  <ion-list>
-    <h3 align="center">Proje</h3>
-    
+ <h3 align="center">Proje</h3>
+
+
     <ion-item>
         <ion-label floating>Proje Adı</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="PAd" formControlName="PAd"></ion-input>
     </ion-item>
+
+
+      
+
 
     <ion-item>
         <ion-label floating>Proje Konusu</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="PKonu" formControlName="PKonu"></ion-input>
     </ion-item>
 
-    <ion-item>
+<ion-item>
+        <ion-label floating>Projede kullanılan teknoloji</ion-label>
+      <ion-input type="text" value="" name="PTek" formControlName="PTek" ></ion-input>
+    </ion-item>
+
+
+<ion-item>
         <ion-label floating>Açıklama</ion-label>
-      <ion-input type="text" value="" ></ion-input>
+      <ion-input type="text" value="" name="Açıklama" formControlName="Açıklama"></ion-input>
     </ion-item>
-
 
   </ion-list>
 
+  </form>
+  
+  <ion-list>
+  <button ion-button icon-start round (click)="onButtonClick()">
+    <ion-icon name="md-add-circle"></ion-icon>
+    Proje Ekle
+  </button>
+  </ion-list>
+  
+  
+  <form [formGroup]="projectInformation" (ngSubmit)="closeModal()" novalidate>
+      <ion-list>
+  <br><br>
+  
+  <div *ngIf="buttonClicked">
+    
+    <h3 align="center">Proje 2</h3>
 
+
+    <ion-item>
+        <ion-label floating>Proje Adı</ion-label>
+      <ion-input type="text" value="" name="PAd2" formControlName="PAd2"></ion-input>
+    </ion-item>
+
+
+      
+
+
+    <ion-item>
+        <ion-label floating>Proje Konusu</ion-label>
+      <ion-input type="text" value="" name="PKonu2" formControlName="PKonu2"></ion-input>
+    </ion-item>
+
+<ion-item>
+        <ion-label floating>Projede kullanılan teknoloji</ion-label>
+      <ion-input type="text" value="" name="PTek2" formControlName="PTek2" ></ion-input>
+    </ion-item>
+
+
+<ion-item>
+        <ion-label floating>Açıklama</ion-label>
+      <ion-input type="text" value="" name="Açıklama2" formControlName="Açıklama2"></ion-input>
+    </ion-item>
+    
+    
+    
+    
+  </div>
+  
+</ion-list>
+  </form>
+  <ion-list> 
+      <div *ngIf="buttonClicked">
+  <button ion-button icon-start round (click)="Projeekle()">
+      <ion-icon name="md-add-circle"></ion-icon>
+      Proje Ekle 
+    </button>
+      </div>
+  </ion-list>
+
+
+
+ <br><br>
+
+
+
+ <form [formGroup]="projectInformation" (ngSubmit)="closeModal()" novalidate>
+    <ion-list>
+
+
+<div *ngIf="kontrol">
+
+   <h3 align="center">Proje</h3>
+
+
+    <ion-item>
+        <ion-label floating>Proje Adı</ion-label>
+      <ion-input type="text" value="" name="PAd3" formControlName="PAd3"></ion-input>
+    </ion-item>
+
+
+      
+
+
+    <ion-item>
+        <ion-label floating>Proje Konusu</ion-label>
+      <ion-input type="text" value="" name="PKonu3" formControlName="PKonu3"></ion-input>
+    </ion-item>
+
+<ion-item>
+        <ion-label floating>Projede kullanılan teknoloji</ion-label>
+      <ion-input type="text" value="" name="PTek3" formControlName="PTek3" ></ion-input>
+    </ion-item>
+
+
+<ion-item>
+        <ion-label floating>Açıklama</ion-label>
+      <ion-input type="text" value="" name="Açıklama3" formControlName="Açıklama3"></ion-input>
+    </ion-item>
+
+
+ <br><br>
+</div>
+
+
+
+
+
+</ion-list>
+   
+ </form>
 </ion-content>

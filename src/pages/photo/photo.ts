@@ -16,8 +16,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class PhotoPage {
 
-public parameter1 = '';
-  public parameter2 = '';
+
   public photos: any;
   public base64Image: string;
 
@@ -25,7 +24,8 @@ public parameter1 = '';
   }
    closeModal(){
 
-    this.view.dismiss();
+     const photoData = this.photos;
+    this.view.dismiss(photoData);
   }
 
   ionViewDidLoad() {
