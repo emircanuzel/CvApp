@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Modal } from 'ionic-angular';
+import * as jsPDF from 'jspdf'; 
 
 @Component({
   selector: 'page-home',
@@ -91,6 +92,31 @@ console.log(this.socialDatas);
 console.log(this.workDatas);
 console.log(this.projectDatas);
 console.log(this.photoDatas);
+
+var doc = new jsPDF();
+var i=0;
+for(var key in this.personalDatas){
+   doc.text(20, 10 + i, key + ": " + this.personalDatas[key]);
+   i+=10;
+}
+for(var key in this.educationDatas){
+  doc.text(20, 10 + i, key + ": " + this.educationDatas[key]);
+  i+=10;
+}
+for(var key in this.workDatas){
+  doc.text(20, 10 + i, key + ": " + this.workDatas[key]);
+  i+=10;
+}
+for(var key in this.projectDatas){
+  doc.text(20, 10 + i, key + ": " + this.projectDatas[key]);
+  i+=10;
+}
+for(var key in this.socialDatas){
+  doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
+  i+=10;
+}
+doc.save('CV.pdf');
+
 
 }
 
