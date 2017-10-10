@@ -87,6 +87,9 @@ var HomePage = (function () {
         this.personalDatas = {};
         this.educationDatas = {};
         this.socialDatas = {};
+        this.workDatas = {};
+        this.projectDatas = {};
+        this.photoDatas = {};
     }
     HomePage.prototype.openModalKisisel = function () {
         var _this = this;
@@ -105,12 +108,20 @@ var HomePage = (function () {
         });
     };
     HomePage.prototype.openModalIs = function () {
+        var _this = this;
         var Is = this.modal.create('WorkPage');
         Is.present();
+        Is.onDidDismiss(function (workData) {
+            _this.workDatas = workData;
+        });
     };
     HomePage.prototype.openModalProje = function () {
+        var _this = this;
         var Proje = this.modal.create('ProjectPage');
         Proje.present();
+        Proje.onDidDismiss(function (projectData) {
+            _this.projectDatas = projectData;
+        });
     };
     HomePage.prototype.openModalSosyal = function () {
         var _this = this;
@@ -121,13 +132,20 @@ var HomePage = (function () {
         });
     };
     HomePage.prototype.openModalFoto = function () {
+        var _this = this;
         var Foto = this.modal.create('PhotoPage');
         Foto.present();
+        Foto.onDidDismiss(function (photoData) {
+            _this.photoDatas = photoData;
+        });
     };
     HomePage.prototype.openOnayla = function () {
         console.log(this.personalDatas);
         console.log(this.educationDatas);
         console.log(this.socialDatas);
+        console.log(this.workDatas);
+        console.log(this.projectDatas);
+        console.log(this.photoDatas);
     };
     return HomePage;
 }());
