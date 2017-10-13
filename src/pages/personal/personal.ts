@@ -25,12 +25,12 @@ export class PersonalPage {
     Ad:['',Validators.required],
     Soyad:['',],
     TCno:['',],
-    Telno:['',Validators.maxLength(10)],
-    Adres:['',],
     DTarih:['',],
+    Telno:['',Validators.maxLength(10)],
+    Cinsiyet:['',],
     Mail:['',],
-    Cinsiyet:['',]
-
+    Adres:['',]
+    
 
   });
   }

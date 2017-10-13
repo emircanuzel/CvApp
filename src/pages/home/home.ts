@@ -17,6 +17,7 @@ export class HomePage {
     public workDatas: any ={};
       public projectDatas: any ={};
       public photoDatas: any ={};
+      
 
   openModalKisisel(){
 
@@ -96,11 +97,11 @@ console.log(this.photoDatas);
 var doc = new jsPDF();
 var i=0;
 for(var key in this.personalDatas){
-   doc.text(20, 10 + i, key + ": " + this.personalDatas[key]);
+   doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
    i+=10;
 }
 for(var key in this.educationDatas){
-  doc.text(20, 10 + i, key + ": " + this.educationDatas[key]);
+  doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
   i+=10;
 }
 for(var key in this.workDatas){

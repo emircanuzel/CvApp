@@ -152,11 +152,11 @@ var HomePage = (function () {
         var doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
         var i = 0;
         for (var key in this.personalDatas) {
-            doc.text(20, 10 + i, key + ": " + this.personalDatas[key]);
+            doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
             i += 10;
         }
         for (var key in this.educationDatas) {
-            doc.text(20, 10 + i, key + ": " + this.educationDatas[key]);
+            doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
             i += 10;
         }
         for (var key in this.workDatas) {
