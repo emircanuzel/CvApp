@@ -22,27 +22,27 @@ webpackEmptyAsyncContext.id = 107;
 
 var map = {
 	"../pages/education/education.module": [
-		262,
+		265,
 		5
 	],
 	"../pages/personal/personal.module": [
-		263,
+		266,
 		4
 	],
 	"../pages/photo/photo.module": [
-		264,
+		267,
 		3
 	],
 	"../pages/project/project.module": [
-		265,
+		268,
 		2
 	],
 	"../pages/social/social.module": [
-		266,
+		269,
 		1
 	],
 	"../pages/work/work.module": [
-		267,
+		270,
 		0
 	]
 };
@@ -69,6 +69,8 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jspdf__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jspdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jspdf__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -78,6 +80,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var HomePage = (function () {
@@ -146,6 +149,29 @@ var HomePage = (function () {
         console.log(this.workDatas);
         console.log(this.projectDatas);
         console.log(this.photoDatas);
+        var doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
+        var i = 0;
+        for (var key in this.personalDatas) {
+            doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
+            i += 10;
+        }
+        for (var key in this.educationDatas) {
+            doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
+            i += 10;
+        }
+        for (var key in this.workDatas) {
+            doc.text(20, 10 + i, key + ": " + this.workDatas[key]);
+            i += 10;
+        }
+        for (var key in this.projectDatas) {
+            doc.text(20, 10 + i, key + ": " + this.projectDatas[key]);
+            i += 10;
+        }
+        for (var key in this.socialDatas) {
+            doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
+            i += 10;
+        }
+        doc.save('CV.pdf');
     };
     return HomePage;
 }());

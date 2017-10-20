@@ -96,14 +96,36 @@ console.log(this.photoDatas);
 
 var doc = new jsPDF();
 var i=0;
-for(var key in this.personalDatas){
-   doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
-   i+=10;
-}
-for(var key in this.educationDatas){
-  doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
-  i+=10;
-}
+// for(var key in this.personalDatas){
+//    doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
+//    i+=10;
+// }
+
+doc.text(85,10 , "Kisisel Bilgiler")
+doc.text(10,30 , "Ad: "+ this.personalDatas.Ad)
+doc.text(10,40 , "Soyad: "+ this.personalDatas.Soyad)
+doc.text(10,50 , "TC no: "+ this.personalDatas.TCno)
+doc.text(10,60 , "Dogum Tarihi: "+ this.personalDatas.DTarih)
+doc.text(10,70 , "Adres: "+ this.personalDatas.Adres)
+doc.text(110,30 , "Cinsiyet: "+ this.personalDatas.Cinsiyet)
+doc.text(110,40 , "Telefon no: "+ this.personalDatas.Telno)
+doc.text(110,50 , "Mail: "+ this.personalDatas.Mail)
+
+
+
+doc.text(10,80 , "--------------------------------------------------------------------------------------------------")
+doc.text(85,90 , "Egitim Bilgileri")
+doc.text(10,100 , "Lise Adi: "+ this.educationDatas.LAd)
+doc.text(10,110 , "Lise Türü: "+ this.educationDatas.LTürü)
+doc.text(110,100 , "Baslangic Tarihi: "+ this.educationDatas.LBaTarih)
+doc.text(110,110 , "Bitis Tarihi: "+ this.educationDatas.LBiTarih)
+doc.text(10,120 , "Lise Ortalamasi: "+ this.educationDatas.LOrtalama)
+
+
+// for(var key in this.educationDatas){
+//   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
+//   i+=10;
+// }
 for(var key in this.workDatas){
   doc.text(20, 10 + i, key + ": " + this.workDatas[key]);
   i+=10;
