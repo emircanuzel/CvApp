@@ -37,6 +37,7 @@ projectInformation: any = {};
       PKonu3:['',],
       PTek3:['',],
       Açıklama3:['',],
+      PSayac:['',],
   
   
     });
@@ -49,10 +50,12 @@ projectInformation: any = {};
   
   public onButtonClick() {
     this.buttonClicked = !this.buttonClicked;
+  //  this.projectInformation.PSayac.value=1
   }
 
 public Projeekle() {
     this.kontrol = !this.kontrol;
+    // this.projectInformation.PSayac.value=12;
   }
  closeModal(){
 
