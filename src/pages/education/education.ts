@@ -39,6 +39,7 @@ export class EducationPage {
   YTürü:['',],
    YBaTarih:['',],    
     YBiTarih:['',],   
+    
    
   
   

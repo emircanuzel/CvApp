@@ -96,6 +96,9 @@ console.log(this.photoDatas);
 
 var doc = new jsPDF();
 var i=0;
+i=this.workDatas.Sayac;
+
+
 // for(var key in this.personalDatas){
 //    doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
 //    i+=10;
@@ -122,7 +125,7 @@ doc.text(110,110 , "Bitis Tarihi: "+ this.educationDatas.LBiTarih)
 doc.text(10,120 , "Lise Ortalamasi: "+ this.educationDatas.LOrtalama)
 
 doc.text(10,140 , "Universite Adi: "+ this.educationDatas.UAd)
-doc.text(10,150 , "Universite Türü: "+ this.educationDatas.UTürü)
+doc.text(10,150 , "Universite Bölümü: "+ this.educationDatas.UTürü)
 doc.text(110,140 , "Baslangic Tarihi: "+ this.educationDatas.UBaTarih)
 doc.text(110,150 , "Bitis Tarihi: "+ this.educationDatas.UBiTarih)
 doc.text(10,160 , "Universite Ortalamasi: "+ this.educationDatas.UOrtalama)
@@ -132,9 +135,12 @@ doc.text(10,190 , "Yüksek Lisans Türü: "+ this.educationDatas.YTürü)
 doc.text(110,180 , "Baslangic Tarihi: "+ this.educationDatas.YBaTarih)
 doc.text(110,190 , "Bitis Tarihi: "+ this.educationDatas.YBiTarih)
 
+if(i==1){
 
 
   doc.text(10,200 , "--------------------------------------------------------------------------------------------------")
+}
+
   doc.text(85,210 , "Deneyim Bilgileri")
   doc.text(10,220 , "Sirket Adi: "+ this.workDatas.SAd)
   doc.text(110,220 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih)
