@@ -150,6 +150,7 @@ var HomePage = (function () {
         console.log(this.projectDatas);
         console.log(this.photoDatas);
         var doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
+        var doc2 = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
         var i = 0;
         i = this.workDatas.Sayac;
         // for(var key in this.personalDatas){
@@ -182,8 +183,8 @@ var HomePage = (function () {
         doc.text(110, 180, "Baslangic Tarihi: " + this.educationDatas.YBaTarih);
         doc.text(110, 190, "Bitis Tarihi: " + this.educationDatas.YBiTarih);
         if (i == 1) {
-            doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
         }
+        doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
         doc.text(85, 210, "Deneyim Bilgileri");
         doc.text(10, 220, "Sirket Adi: " + this.workDatas.SAd);
         doc.text(110, 220, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih);
@@ -191,6 +192,42 @@ var HomePage = (function () {
         doc.text(10, 230, "Pozisyonu: " + this.workDatas.FPozisyon);
         doc.text(10, 250, "Is Tanimi: " + this.workDatas.Tanım);
         doc.text(10, 240, "Sirketin Bulundugu Il: " + this.workDatas.Il);
+        doc.text(10, 265, "Sirket Adi: " + this.workDatas.SAd2);
+        doc.text(110, 265, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih2);
+        doc.text(110, 275, "Bitis Tarihi: " + this.workDatas.BiTarih2);
+        doc.text(10, 275, "Pozisyonu: " + this.workDatas.FPozisyon2);
+        doc.text(10, 295, "Is Tanimi: " + this.workDatas.Tanım2);
+        doc.text(10, 285, "Sirketin Bulundugu Il: " + this.workDatas.Il2);
+        doc2.text(10, 10, "Sirket Adi: " + this.workDatas.SAd3);
+        doc2.text(110, 10, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih3);
+        doc2.text(110, 20, "Bitis Tarihi: " + this.workDatas.BiTarih3);
+        doc2.text(10, 20, "Pozisyonu: " + this.workDatas.FPozisyon3);
+        doc2.text(10, 40, "Is Tanimi: " + this.workDatas.Tanım3);
+        doc2.text(10, 30, "Sirketin Bulundugu Il: " + this.workDatas.Il3);
+        doc2.text(10, 50, "Yabanci Dil: " + this.workDatas.YDil);
+        doc2.text(10, 60, "Yetenek: " + this.workDatas.Yetenek);
+        doc2.text(10, 70, "Sertifika: " + this.workDatas.Sertifika);
+        doc2.text(10, 80, "--------------------------------------------------------------------------------------------------");
+        doc2.text(85, 90, "Proje Bilgileri");
+        doc2.text(10, 100, "Proje Adi: " + this.workDatas.PAd);
+        doc2.text(10, 110, "Proje Konusu: " + this.workDatas.PKonu);
+        doc2.text(10, 120, "Proje Teknolojisi: " + this.workDatas.PTek);
+        doc2.text(10, 130, "Açiklama: " + this.workDatas.Açıklama);
+        doc2.text(10, 140, "Proje Adi: " + this.workDatas.PAd2);
+        doc2.text(10, 150, "Proje Konusu: " + this.workDatas.PKonu2);
+        doc2.text(10, 160, "Proje Teknolojisi: " + this.workDatas.PTek2);
+        doc2.text(10, 170, "Açiklama: " + this.workDatas.Açıklama2);
+        doc2.text(10, 180, "Proje Adi: " + this.workDatas.PAd2);
+        doc2.text(10, 190, "Proje Konusu: " + this.workDatas.PKonu2);
+        doc2.text(10, 200, "Proje Teknolojisi: " + this.workDatas.PTek2);
+        doc2.text(10, 210, "Açiklama: " + this.workDatas.Açıklama2);
+        doc2.text(10, 220, "--------------------------------------------------------------------------------------------------");
+        doc2.text(85, 230, "Sosyal Bilgileri");
+        doc2.text(10, 240, "Skype: " + this.workDatas.Skype);
+        doc2.text(10, 250, "Linkedin: " + this.workDatas.Linkedin);
+        doc2.text(10, 260, "GitHub: " + this.workDatas.GitHub);
+        doc2.text(10, 270, "Instagram: " + this.workDatas.Instagram);
+        doc2.text(10, 280, "Hobiler: " + this.workDatas.Hobiler);
         // for(var key in this.educationDatas){
         //   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
         //   i+=10;
@@ -208,6 +245,7 @@ var HomePage = (function () {
         //   i+=10;
         // }
         doc.save('CV.pdf');
+        doc2.save('CV.pdf2');
     };
     return HomePage;
 }());

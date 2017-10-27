@@ -151,26 +151,62 @@ var HomePage = (function () {
         console.log(this.photoDatas);
         var doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
         var i = 0;
-        for (var key in this.personalDatas) {
-            doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
-            i += 10;
+        i = this.workDatas.Sayac;
+        // for(var key in this.personalDatas){
+        //    doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
+        //    i+=10;
+        // }
+        doc.text(85, 10, "Kisisel Bilgiler");
+        doc.text(10, 30, "Ad: " + this.personalDatas.Ad);
+        doc.text(10, 40, "Soyad: " + this.personalDatas.Soyad);
+        doc.text(10, 50, "TC no: " + this.personalDatas.TCno);
+        doc.text(10, 60, "Dogum Tarihi: " + this.personalDatas.DTarih);
+        doc.text(10, 70, "Adres: " + this.personalDatas.Adres);
+        doc.text(110, 30, "Cinsiyet: " + this.personalDatas.Cinsiyet);
+        doc.text(110, 40, "Telefon no: " + this.personalDatas.Telno);
+        doc.text(110, 50, "Mail: " + this.personalDatas.Mail);
+        doc.text(10, 80, "--------------------------------------------------------------------------------------------------");
+        doc.text(85, 90, "Egitim Bilgileri");
+        doc.text(10, 100, "Lise Adi: " + this.educationDatas.LAd);
+        doc.text(10, 110, "Lise Türü: " + this.educationDatas.LTürü);
+        doc.text(110, 100, "Baslangic Tarihi: " + this.educationDatas.LBaTarih);
+        doc.text(110, 110, "Bitis Tarihi: " + this.educationDatas.LBiTarih);
+        doc.text(10, 120, "Lise Ortalamasi: " + this.educationDatas.LOrtalama);
+        doc.text(10, 140, "Universite Adi: " + this.educationDatas.UAd);
+        doc.text(10, 150, "Universite Bölümü: " + this.educationDatas.UTürü);
+        doc.text(110, 140, "Baslangic Tarihi: " + this.educationDatas.UBaTarih);
+        doc.text(110, 150, "Bitis Tarihi: " + this.educationDatas.UBiTarih);
+        doc.text(10, 160, "Universite Ortalamasi: " + this.educationDatas.UOrtalama);
+        doc.text(10, 180, "Yüksek Lisans Adi: " + this.educationDatas.YAd);
+        doc.text(10, 190, "Yüksek Lisans Türü: " + this.educationDatas.YTürü);
+        doc.text(110, 180, "Baslangic Tarihi: " + this.educationDatas.YBaTarih);
+        doc.text(110, 190, "Bitis Tarihi: " + this.educationDatas.YBiTarih);
+        if (i == 1) {
+            doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
         }
-        for (var key in this.educationDatas) {
-            doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
-            i += 10;
-        }
-        for (var key in this.workDatas) {
-            doc.text(20, 10 + i, key + ": " + this.workDatas[key]);
-            i += 10;
-        }
-        for (var key in this.projectDatas) {
-            doc.text(20, 10 + i, key + ": " + this.projectDatas[key]);
-            i += 10;
-        }
-        for (var key in this.socialDatas) {
-            doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
-            i += 10;
-        }
+        doc.text(85, 210, "Deneyim Bilgileri");
+        doc.text(10, 220, "Sirket Adi: " + this.workDatas.SAd);
+        doc.text(110, 220, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih);
+        doc.text(110, 230, "Bitis Tarihi: " + this.workDatas.BiTarih);
+        doc.text(10, 230, "Pozisyonu: " + this.workDatas.FPozisyon);
+        doc.text(10, 250, "Is Tanimi: " + this.workDatas.Tanım);
+        doc.text(10, 240, "Sirketin Bulundugu Il: " + this.workDatas.Il);
+        // for(var key in this.educationDatas){
+        //   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
+        //   i+=10;
+        // }
+        // for(var key in this.workDatas){
+        //   doc.text(20, 10 + i, key + ": " + this.workDatas[key]);
+        //   i+=10;
+        // }
+        // for(var key in this.projectDatas){
+        //   doc.text(20, 10 + i, key + ": " + this.projectDatas[key]);
+        //   i+=10;
+        // }
+        // for(var key in this.socialDatas){
+        //   doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
+        //   i+=10;
+        // }
         doc.save('CV.pdf');
     };
     return HomePage;

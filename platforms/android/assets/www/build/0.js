@@ -71,6 +71,7 @@ var WorkPage = (function () {
         this.view = view;
         this.formBuilder = formBuilder;
         this.workInformation = {};
+        this.Sayac = 0;
         this.kontrol = false;
         this.buttonClicked = false;
         this.workInformation = this.formBuilder.group({
@@ -94,14 +95,18 @@ var WorkPage = (function () {
             BiTarih3: ['',],
             FPozisyon3: ['',],
             Tanım3: ['',],
-            Il3: ['',]
+            Il3: ['',],
         });
     }
     WorkPage.prototype.onButtonClick = function () {
         this.buttonClicked = !this.buttonClicked;
+        // this.workInformation.Sayac=1;
+        this.Sayac = 1;
     };
     WorkPage.prototype.Deneyimekle = function () {
         this.kontrol = !this.kontrol;
+        // this.workInformation.Sayac=12;
+        this.Sayac = 12;
     };
     WorkPage.prototype.closeModal = function () {
         var workData = this.workInformation.value;
@@ -109,6 +114,7 @@ var WorkPage = (function () {
     };
     WorkPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad WorkPage');
+        console.log(this.Sayac);
     };
     return WorkPage;
 }());

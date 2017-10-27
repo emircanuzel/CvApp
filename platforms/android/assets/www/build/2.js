@@ -86,13 +86,16 @@ var ProjectPage = (function () {
             PKonu3: ['',],
             PTek3: ['',],
             Açıklama3: ['',],
+            PSayac: ['',],
         });
     }
     ProjectPage.prototype.onButtonClick = function () {
         this.buttonClicked = !this.buttonClicked;
+        //  this.projectInformation.PSayac.value=1
     };
     ProjectPage.prototype.Projeekle = function () {
         this.kontrol = !this.kontrol;
+        // this.projectInformation.PSayac.value=12;
     };
     ProjectPage.prototype.closeModal = function () {
         var projectData = this.projectInformation.value;
