@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Modal } from 'ionic-angular';
 import * as jsPDF from 'jspdf'; 
+import { EmailComposer } from '@ionic-native/email-composer';
+
 
 @Component({
   selector: 'page-home',
@@ -8,7 +10,7 @@ import * as jsPDF from 'jspdf';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController , private modal:ModalController) {
+  constructor(public navCtrl: NavController , private modal:ModalController,private emailComposer:EmailComposer) {
 
   }
     public personalDatas: any = {};
@@ -217,6 +219,22 @@ doc.text(10,200 , "-------------------------------------------------------------
 doc.save('CV.pdf');
 doc2.save('CV.pdf2');
 
+
+
+
+let email = {
+  to:'emircanuzel95@gmail.com',
+  
+  attachment :[
+    jsPDF.doc,
+    jsPDF.doc2
+
+  ],
+subject:'CV ',
+body:'emircan uzel <br><br>',
+isHtml:true
+};
+this.emailComposer.open(email);
 
 }
 

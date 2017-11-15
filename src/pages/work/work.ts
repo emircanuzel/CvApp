@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder } from '@angular/forms';
-import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the WorkPage page.

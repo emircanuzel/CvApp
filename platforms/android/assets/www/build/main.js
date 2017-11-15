@@ -22,27 +22,27 @@ webpackEmptyAsyncContext.id = 107;
 
 var map = {
 	"../pages/education/education.module": [
-		265,
+		266,
 		5
 	],
 	"../pages/personal/personal.module": [
-		266,
+		267,
 		4
 	],
 	"../pages/photo/photo.module": [
-		267,
+		268,
 		3
 	],
 	"../pages/project/project.module": [
-		268,
+		269,
 		2
 	],
 	"../pages/social/social.module": [
-		269,
+		270,
 		1
 	],
 	"../pages/work/work.module": [
-		270,
+		271,
 		0
 	]
 };
@@ -68,9 +68,10 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jspdf__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jspdf__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_jspdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_jspdf__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__ = __webpack_require__(192);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -83,10 +84,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(navCtrl, modal) {
+    function HomePage(navCtrl, modal, emailComposer) {
         this.navCtrl = navCtrl;
         this.modal = modal;
+        this.emailComposer = emailComposer;
         this.personalDatas = {};
         this.educationDatas = {};
         this.socialDatas = {};
@@ -150,6 +153,7 @@ var HomePage = (function () {
         console.log(this.projectDatas);
         console.log(this.photoDatas);
         var doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
+        var doc2 = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
         var i = 0;
         i = this.workDatas.Sayac;
         // for(var key in this.personalDatas){
@@ -182,8 +186,8 @@ var HomePage = (function () {
         doc.text(110, 180, "Baslangic Tarihi: " + this.educationDatas.YBaTarih);
         doc.text(110, 190, "Bitis Tarihi: " + this.educationDatas.YBiTarih);
         if (i == 1) {
-            doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
         }
+        doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
         doc.text(85, 210, "Deneyim Bilgileri");
         doc.text(10, 220, "Sirket Adi: " + this.workDatas.SAd);
         doc.text(110, 220, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih);
@@ -191,6 +195,42 @@ var HomePage = (function () {
         doc.text(10, 230, "Pozisyonu: " + this.workDatas.FPozisyon);
         doc.text(10, 250, "Is Tanimi: " + this.workDatas.Tanım);
         doc.text(10, 240, "Sirketin Bulundugu Il: " + this.workDatas.Il);
+        doc.text(10, 265, "Sirket Adi: " + this.workDatas.SAd2);
+        doc.text(110, 265, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih2);
+        doc.text(110, 275, "Bitis Tarihi: " + this.workDatas.BiTarih2);
+        doc.text(10, 275, "Pozisyonu: " + this.workDatas.FPozisyon2);
+        doc.text(10, 295, "Is Tanimi: " + this.workDatas.Tanım2);
+        doc.text(10, 285, "Sirketin Bulundugu Il: " + this.workDatas.Il2);
+        doc2.text(10, 10, "Sirket Adi: " + this.workDatas.SAd3);
+        doc2.text(110, 10, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih3);
+        doc2.text(110, 20, "Bitis Tarihi: " + this.workDatas.BiTarih3);
+        doc2.text(10, 20, "Pozisyonu: " + this.workDatas.FPozisyon3);
+        doc2.text(10, 40, "Is Tanimi: " + this.workDatas.Tanım3);
+        doc2.text(10, 30, "Sirketin Bulundugu Il: " + this.workDatas.Il3);
+        doc2.text(10, 50, "Yabanci Dil: " + this.workDatas.YDil);
+        doc2.text(10, 60, "Yetenek: " + this.workDatas.Yetenek);
+        doc2.text(10, 70, "Sertifika: " + this.workDatas.Sertifika);
+        doc2.text(10, 80, "--------------------------------------------------------------------------------------------------");
+        doc2.text(85, 90, "Proje Bilgileri");
+        doc2.text(10, 100, "Proje Adi: " + this.workDatas.PAd);
+        doc2.text(10, 110, "Proje Konusu: " + this.workDatas.PKonu);
+        doc2.text(10, 120, "Proje Teknolojisi: " + this.workDatas.PTek);
+        doc2.text(10, 130, "Açiklama: " + this.workDatas.Açıklama);
+        doc2.text(10, 140, "Proje Adi: " + this.workDatas.PAd2);
+        doc2.text(10, 150, "Proje Konusu: " + this.workDatas.PKonu2);
+        doc2.text(10, 160, "Proje Teknolojisi: " + this.workDatas.PTek2);
+        doc2.text(10, 170, "Açiklama: " + this.workDatas.Açıklama2);
+        doc2.text(10, 180, "Proje Adi: " + this.workDatas.PAd2);
+        doc2.text(10, 190, "Proje Konusu: " + this.workDatas.PKonu2);
+        doc2.text(10, 200, "Proje Teknolojisi: " + this.workDatas.PTek2);
+        doc2.text(10, 210, "Açiklama: " + this.workDatas.Açıklama2);
+        doc2.text(10, 220, "--------------------------------------------------------------------------------------------------");
+        doc2.text(85, 230, "Sosyal Bilgileri");
+        doc2.text(10, 240, "Skype: " + this.workDatas.Skype);
+        doc2.text(10, 250, "Linkedin: " + this.workDatas.Linkedin);
+        doc2.text(10, 260, "GitHub: " + this.workDatas.GitHub);
+        doc2.text(10, 270, "Instagram: " + this.workDatas.Instagram);
+        doc2.text(10, 280, "Hobiler: " + this.workDatas.Hobiler);
         // for(var key in this.educationDatas){
         //   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
         //   i+=10;
@@ -208,6 +248,18 @@ var HomePage = (function () {
         //   i+=10;
         // }
         doc.save('CV.pdf');
+        doc2.save('CV.pdf2');
+        var email = {
+            to: 'emircanuzel95@gmail.com',
+            attachment: [
+                __WEBPACK_IMPORTED_MODULE_2_jspdf__["doc"],
+                __WEBPACK_IMPORTED_MODULE_2_jspdf__["doc2"]
+            ],
+            subject: 'CV ',
+            body: 'emircan uzel <br><br>',
+            isHtml: true
+        };
+        this.emailComposer.open(email);
     };
     return HomePage;
 }());
@@ -215,20 +267,20 @@ HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button>\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__["a" /* EmailComposer */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
 
 /***/ }),
 
-/***/ 193:
+/***/ 194:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(213);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -236,25 +288,27 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 212:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(262);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_email_composer__ = __webpack_require__(192);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -295,6 +349,7 @@ AppModule = __decorate([
         providers: [
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_8__ionic_native_email_composer__["a" /* EmailComposer */],
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
             __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__["a" /* Camera */]
         ]
@@ -305,13 +360,13 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 261:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(191);
@@ -351,5 +406,5 @@ MyApp = __decorate([
 
 /***/ })
 
-},[193]);
+},[194]);
 //# sourceMappingURL=main.js.map
