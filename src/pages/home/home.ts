@@ -216,8 +216,8 @@ doc.text(10,200 , "-------------------------------------------------------------
 //   doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
 //   i+=10;
 // }
-doc.save('CV.pdf');
-doc2.save('CV.pdf2');
+// doc.save('CV.pdf');
+// doc2.save('CV.pdf2');
 
 
 
@@ -225,10 +225,9 @@ doc2.save('CV.pdf2');
 let email = {
   to:'emircanuzel95@gmail.com',
   
-  attachment :[
-    jsPDF.doc,
-    jsPDF.doc2
-
+  attachments: [
+    
+    'file://CV.pdf'
   ],
 subject:'CV ',
 body:'emircan uzel <br><br>',

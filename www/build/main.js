@@ -247,13 +247,12 @@ var HomePage = (function () {
         //   doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
         //   i+=10;
         // }
-        doc.save('CV.pdf');
-        doc2.save('CV.pdf2');
+        // doc.save('CV.pdf');
+        // doc2.save('CV.pdf2');
         var email = {
             to: 'emircanuzel95@gmail.com',
-            attachment: [
-                __WEBPACK_IMPORTED_MODULE_2_jspdf__["doc"],
-                __WEBPACK_IMPORTED_MODULE_2_jspdf__["doc2"]
+            attachments: [
+                'file://CV.pdf'
             ],
             subject: 'CV ',
             body: 'emircan uzel <br><br>',
