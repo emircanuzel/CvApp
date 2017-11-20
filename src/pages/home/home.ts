@@ -19,6 +19,8 @@ export class HomePage {
     public workDatas: any ={};
       public projectDatas: any ={};
       public photoDatas: any ={};
+      public doc = new jsPDF();
+      public doc2 = new jsPDF();
       
 
   openModalKisisel(){
@@ -96,8 +98,7 @@ console.log(this.workDatas);
 console.log(this.projectDatas);
 console.log(this.photoDatas);
 
-var doc = new jsPDF();
-var doc2 = new jsPDF();
+
 var i=0;
 i=this.workDatas.Sayac;
 
@@ -107,98 +108,98 @@ i=this.workDatas.Sayac;
 //    i+=10;
 // }
 
-doc.text(85,10 , "Kisisel Bilgiler")
-doc.text(10,30 , "Ad: "+ this.personalDatas.Ad)
-doc.text(10,40 , "Soyad: "+ this.personalDatas.Soyad)
-doc.text(10,50 , "TC no: "+ this.personalDatas.TCno)
-doc.text(10,60 , "Dogum Tarihi: "+ this.personalDatas.DTarih)
-doc.text(10,70 , "Adres: "+ this.personalDatas.Adres)
-doc.text(110,30 , "Cinsiyet: "+ this.personalDatas.Cinsiyet)
-doc.text(110,40 , "Telefon no: "+ this.personalDatas.Telno)
-doc.text(110,50 , "Mail: "+ this.personalDatas.Mail)
+this.doc.text(85,10 , "Kisisel Bilgiler")
+this.doc.text(10,30 , "Ad: "+ this.personalDatas.Ad)
+this.doc.text(10,40 , "Soyad: "+ this.personalDatas.Soyad)
+this.doc.text(10,50 , "TC no: "+ this.personalDatas.TCno)
+this.doc.text(10,60 , "Dogum Tarihi: "+ this.personalDatas.DTarih)
+this.doc.text(10,70 , "Adres: "+ this.personalDatas.Adres)
+this.doc.text(110,30 , "Cinsiyet: "+ this.personalDatas.Cinsiyet)
+this.doc.text(110,40 , "Telefon no: "+ this.personalDatas.Telno)
+this.doc.text(110,50 , "Mail: "+ this.personalDatas.Mail)
 
 
 
-doc.text(10,80 , "--------------------------------------------------------------------------------------------------")
-doc.text(85,90 , "Egitim Bilgileri")
-doc.text(10,100 , "Lise Adi: "+ this.educationDatas.LAd)
-doc.text(10,110 , "Lise Türü: "+ this.educationDatas.LTürü)
-doc.text(110,100 , "Baslangic Tarihi: "+ this.educationDatas.LBaTarih)
-doc.text(110,110 , "Bitis Tarihi: "+ this.educationDatas.LBiTarih)
-doc.text(10,120 , "Lise Ortalamasi: "+ this.educationDatas.LOrtalama)
+this.doc.text(10,80 , "--------------------------------------------------------------------------------------------------")
+this.doc.text(85,90 , "Egitim Bilgileri")
+this.doc.text(10,100 , "Lise Adi: "+ this.educationDatas.LAd)
+this.doc.text(10,110 , "Lise Türü: "+ this.educationDatas.LTürü)
+this.doc.text(110,100 , "Baslangic Tarihi: "+ this.educationDatas.LBaTarih)
+this.doc.text(110,110 , "Bitis Tarihi: "+ this.educationDatas.LBiTarih)
+this.doc.text(10,120 , "Lise Ortalamasi: "+ this.educationDatas.LOrtalama)
 
-doc.text(10,140 , "Universite Adi: "+ this.educationDatas.UAd)
-doc.text(10,150 , "Universite Bölümü: "+ this.educationDatas.UTürü)
-doc.text(110,140 , "Baslangic Tarihi: "+ this.educationDatas.UBaTarih)
-doc.text(110,150 , "Bitis Tarihi: "+ this.educationDatas.UBiTarih)
-doc.text(10,160 , "Universite Ortalamasi: "+ this.educationDatas.UOrtalama)
+this.doc.text(10,140 , "Universite Adi: "+ this.educationDatas.UAd)
+this.doc.text(10,150 , "Universite Bölümü: "+ this.educationDatas.UTürü)
+this.doc.text(110,140 , "Baslangic Tarihi: "+ this.educationDatas.UBaTarih)
+this.doc.text(110,150 , "Bitis Tarihi: "+ this.educationDatas.UBiTarih)
+this.doc.text(10,160 , "Universite Ortalamasi: "+ this.educationDatas.UOrtalama)
 
-doc.text(10,180 , "Yüksek Lisans Adi: "+ this.educationDatas.YAd)
-doc.text(10,190 , "Yüksek Lisans Türü: "+ this.educationDatas.YTürü)
-doc.text(110,180 , "Baslangic Tarihi: "+ this.educationDatas.YBaTarih)
-doc.text(110,190 , "Bitis Tarihi: "+ this.educationDatas.YBiTarih)
+this.doc.text(10,180 , "Yüksek Lisans Adi: "+ this.educationDatas.YAd)
+this.doc.text(10,190 , "Yüksek Lisans Türü: "+ this.educationDatas.YTürü)
+this.doc.text(110,180 , "Baslangic Tarihi: "+ this.educationDatas.YBaTarih)
+this.doc.text(110,190 , "Bitis Tarihi: "+ this.educationDatas.YBiTarih)
 
 if(i==1){
 
 
 }
-doc.text(10,200 , "--------------------------------------------------------------------------------------------------")
+this.doc.text(10,200 , "--------------------------------------------------------------------------------------------------")
 
-  doc.text(85,210 , "Deneyim Bilgileri")
-  doc.text(10,220 , "Sirket Adi: "+ this.workDatas.SAd)
-  doc.text(110,220 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih)
-  doc.text(110,230 , "Bitis Tarihi: "+ this.workDatas.BiTarih)
-  doc.text(10,230 , "Pozisyonu: "+ this.workDatas.FPozisyon)
-  doc.text(10,250 , "Is Tanimi: "+ this.workDatas.Tanım)
-  doc.text(10,240 , "Sirketin Bulundugu Il: "+ this.workDatas.Il)
+  this.doc.text(85,210 , "Deneyim Bilgileri")
+  this.doc.text(10,220 , "Sirket Adi: "+ this.workDatas.SAd)
+  this.doc.text(110,220 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih)
+  this.doc.text(110,230 , "Bitis Tarihi: "+ this.workDatas.BiTarih)
+  this.doc.text(10,230 , "Pozisyonu: "+ this.workDatas.FPozisyon)
+  this.doc.text(10,250 , "Is Tanimi: "+ this.workDatas.Tanım)
+  this.doc.text(10,240 , "Sirketin Bulundugu Il: "+ this.workDatas.Il)
 
-  doc.text(10,265 , "Sirket Adi: "+ this.workDatas.SAd2)
-  doc.text(110,265 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2)
-  doc.text(110,275 , "Bitis Tarihi: "+ this.workDatas.BiTarih2)
-  doc.text(10,275 , "Pozisyonu: "+ this.workDatas.FPozisyon2)
-  doc.text(10,295 , "Is Tanimi: "+ this.workDatas.Tanım2)
-  doc.text(10,285 , "Sirketin Bulundugu Il: "+ this.workDatas.Il2)
+  this.doc.text(10,265 , "Sirket Adi: "+ this.workDatas.SAd2)
+  this.doc.text(110,265 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2)
+  this.doc.text(110,275 , "Bitis Tarihi: "+ this.workDatas.BiTarih2)
+  this.doc.text(10,275 , "Pozisyonu: "+ this.workDatas.FPozisyon2)
+  this.doc.text(10,295 , "Is Tanimi: "+ this.workDatas.Tanım2)
+  this.doc.text(10,285 , "Sirketin Bulundugu Il: "+ this.workDatas.Il2)
 
 
-  doc2.text(10,10 , "Sirket Adi: "+ this.workDatas.SAd3)
-  doc2.text(110,10 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3)
-  doc2.text(110,20 , "Bitis Tarihi: "+ this.workDatas.BiTarih3)
-  doc2.text(10,20 , "Pozisyonu: "+ this.workDatas.FPozisyon3)
-  doc2.text(10,40 , "Is Tanimi: "+ this.workDatas.Tanım3)
-  doc2.text(10,30 , "Sirketin Bulundugu Il: "+ this.workDatas.Il3)
+  this.doc2.text(10,10 , "Sirket Adi: "+ this.workDatas.SAd3)
+  this.doc2.text(110,10 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3)
+  this.doc2.text(110,20 , "Bitis Tarihi: "+ this.workDatas.BiTarih3)
+  this.doc2.text(10,20 , "Pozisyonu: "+ this.workDatas.FPozisyon3)
+  this.doc2.text(10,40 , "Is Tanimi: "+ this.workDatas.Tanım3)
+  this.doc2.text(10,30 , "Sirketin Bulundugu Il: "+ this.workDatas.Il3)
 
-  doc2.text(10,50 , "Yabanci Dil: "+ this.workDatas.YDil)
-  doc2.text(10,60 , "Yetenek: "+ this.workDatas.Yetenek)
-  doc2.text(10,70 , "Sertifika: "+ this.workDatas.Sertifika)
+  this.doc2.text(10,50 , "Yabanci Dil: "+ this.workDatas.YDil)
+  this.doc2.text(10,60 , "Yetenek: "+ this.workDatas.Yetenek)
+  this.doc2.text(10,70 , "Sertifika: "+ this.workDatas.Sertifika)
 
-  doc2.text(10,80 , "--------------------------------------------------------------------------------------------------")
-  doc2.text(85,90 , "Proje Bilgileri")
+ this.doc2.text(10,80 , "--------------------------------------------------------------------------------------------------")
+ this.doc2.text(85,90 , "Proje Bilgileri")
 
-  doc2.text(10,100 , "Proje Adi: "+ this.workDatas.PAd)
-  doc2.text(10,110 , "Proje Konusu: "+ this.workDatas.PKonu)
-  doc2.text(10,120 , "Proje Teknolojisi: "+ this.workDatas.PTek)
-  doc2.text(10,130 , "Açiklama: "+ this.workDatas.Açıklama)
-
-  
-  doc2.text(10,140 , "Proje Adi: "+ this.workDatas.PAd2)
-  doc2.text(10,150 , "Proje Konusu: "+ this.workDatas.PKonu2)
-  doc2.text(10,160 , "Proje Teknolojisi: "+ this.workDatas.PTek2)
-  doc2.text(10,170 , "Açiklama: "+ this.workDatas.Açıklama2)
+  this.doc2.text(10,100 , "Proje Adi: "+ this.projectDatas.PAd)
+  this.doc2.text(10,110 , "Proje Konusu: "+ this.projectDatas.PKonu)
+  this.doc2.text(10,120 , "Proje Teknolojisi: "+ this.projectDatas.PTek)
+  this.doc2.text(10,130 , "Açiklama: "+ this.projectDatas.Açıklama)
 
   
-  doc2.text(10,180 , "Proje Adi: "+ this.workDatas.PAd2)
-  doc2.text(10,190 , "Proje Konusu: "+ this.workDatas.PKonu2)
-  doc2.text(10,200 , "Proje Teknolojisi: "+ this.workDatas.PTek2)
-  doc2.text(10,210 , "Açiklama: "+ this.workDatas.Açıklama2)
+  this.doc2.text(10,140 , "Proje Adi: "+ this.projectDatas.PAd2)
+  this.doc2.text(10,150 , "Proje Konusu: "+ this.projectDatas.PKonu2)
+  this.doc2.text(10,160 , "Proje Teknolojisi: "+ this.projectDatas.PTek2)
+  this.doc2.text(10,170 , "Açiklama: "+ this.projectDatas.Açıklama2)
 
-  doc2.text(10,220 , "--------------------------------------------------------------------------------------------------")
-  doc2.text(85,230 , "Sosyal Bilgileri")
+  
+  this.doc2.text(10,180 , "Proje Adi: "+ this.projectDatas.PAd2)
+  this.doc2.text(10,190 , "Proje Konusu: "+ this.projectDatas.PKonu2)
+  this.doc2.text(10,200 , "Proje Teknolojisi: "+ this.projectDatas.PTek2)
+  this.doc2.text(10,210 , "Açiklama: "+ this.projectDatas.Açıklama2)
 
-  doc2.text(10,240 , "Skype: "+ this.workDatas.Skype)
-  doc2.text(10,250 , "Linkedin: "+ this.workDatas.Linkedin)
-  doc2.text(10,260 , "GitHub: "+ this.workDatas.GitHub)
-  doc2.text(10,270 , "Instagram: "+ this.workDatas.Instagram)
-  doc2.text(10,280 , "Hobiler: "+ this.workDatas.Hobiler)
+  this.doc2.text(10,220 , "--------------------------------------------------------------------------------------------------")
+  this.doc2.text(85,230 , "Sosyal Bilgileri")
+
+  this.doc2.text(10,240 , "Skype: "+ this.socialDatas.Skype)
+  this.doc2.text(10,250 , "Linkedin: "+ this.socialDatas.Linkedin)
+  this.doc2.text(10,260 , "GitHub: "+ this.socialDatas.GitHub)
+  this.doc2.text(10,270 , "Instagram: "+ this.socialDatas.Instagram)
+  this.doc2.text(10,280 , "Hobiler: "+ this.socialDatas.Hobiler)
 
 // for(var key in this.educationDatas){
 //   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
@@ -216,24 +217,53 @@ doc.text(10,200 , "-------------------------------------------------------------
 //   doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
 //   i+=10;
 // }
-// doc.save('CV.pdf');
-// doc2.save('CV.pdf2');
+this.doc.save('CV.pdf');
+ this.doc2.save('CV.pdf2');
 
 
 
 
-let email = {
-  to:'emircanuzel95@gmail.com',
+// let email = {
+//   to:'emircanuzel95@gmail.com',
   
-  attachments: [
+//   attachment: [
+
     
-    'file://CV.pdf'
-  ],
-subject:'CV ',
-body:'emircan uzel <br><br>',
-isHtml:true
-};
-this.emailComposer.open(email);
+//     // 'file://CV.pdf',
+//   //  ' this.doc ',
+//   //  this.doc.CV.pdf , 
+//     // this.personalDatas,
+//   ],
+// subject:'CV ',
+// body: 'Emircan UZEL' , 
+// isHtml:true
+// };
+// this.emailComposer.open(email);
+
+
+}
+
+mail(){
+
+  let email = {
+    to:'emircanuzel95@gmail.com',
+    
+    attachment: [
+  
+      'res://CV.pdf'
+    //  'file://CV.pdf',
+    //  ' this.doc ',
+    //  this.doc.CV.pdf , 
+      // this.personalDatas,
+
+
+    ],
+  subject:'CV ',
+  body: 'Emircan UZEL' , 
+  isHtml:true
+  };
+  this.emailComposer.open(email);
+
 
 }
 

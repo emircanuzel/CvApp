@@ -96,6 +96,8 @@ var HomePage = (function () {
         this.workDatas = {};
         this.projectDatas = {};
         this.photoDatas = {};
+        this.doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
+        this.doc2 = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
     }
     HomePage.prototype.openModalKisisel = function () {
         var _this = this;
@@ -152,85 +154,83 @@ var HomePage = (function () {
         console.log(this.workDatas);
         console.log(this.projectDatas);
         console.log(this.photoDatas);
-        var doc = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
-        var doc2 = new __WEBPACK_IMPORTED_MODULE_2_jspdf__();
         var i = 0;
         i = this.workDatas.Sayac;
         // for(var key in this.personalDatas){
         //    doc.text(10, 10 + i, key + ": " + this.personalDatas[key]);
         //    i+=10;
         // }
-        doc.text(85, 10, "Kisisel Bilgiler");
-        doc.text(10, 30, "Ad: " + this.personalDatas.Ad);
-        doc.text(10, 40, "Soyad: " + this.personalDatas.Soyad);
-        doc.text(10, 50, "TC no: " + this.personalDatas.TCno);
-        doc.text(10, 60, "Dogum Tarihi: " + this.personalDatas.DTarih);
-        doc.text(10, 70, "Adres: " + this.personalDatas.Adres);
-        doc.text(110, 30, "Cinsiyet: " + this.personalDatas.Cinsiyet);
-        doc.text(110, 40, "Telefon no: " + this.personalDatas.Telno);
-        doc.text(110, 50, "Mail: " + this.personalDatas.Mail);
-        doc.text(10, 80, "--------------------------------------------------------------------------------------------------");
-        doc.text(85, 90, "Egitim Bilgileri");
-        doc.text(10, 100, "Lise Adi: " + this.educationDatas.LAd);
-        doc.text(10, 110, "Lise Türü: " + this.educationDatas.LTürü);
-        doc.text(110, 100, "Baslangic Tarihi: " + this.educationDatas.LBaTarih);
-        doc.text(110, 110, "Bitis Tarihi: " + this.educationDatas.LBiTarih);
-        doc.text(10, 120, "Lise Ortalamasi: " + this.educationDatas.LOrtalama);
-        doc.text(10, 140, "Universite Adi: " + this.educationDatas.UAd);
-        doc.text(10, 150, "Universite Bölümü: " + this.educationDatas.UTürü);
-        doc.text(110, 140, "Baslangic Tarihi: " + this.educationDatas.UBaTarih);
-        doc.text(110, 150, "Bitis Tarihi: " + this.educationDatas.UBiTarih);
-        doc.text(10, 160, "Universite Ortalamasi: " + this.educationDatas.UOrtalama);
-        doc.text(10, 180, "Yüksek Lisans Adi: " + this.educationDatas.YAd);
-        doc.text(10, 190, "Yüksek Lisans Türü: " + this.educationDatas.YTürü);
-        doc.text(110, 180, "Baslangic Tarihi: " + this.educationDatas.YBaTarih);
-        doc.text(110, 190, "Bitis Tarihi: " + this.educationDatas.YBiTarih);
+        this.doc.text(85, 10, "Kisisel Bilgiler");
+        this.doc.text(10, 30, "Ad: " + this.personalDatas.Ad);
+        this.doc.text(10, 40, "Soyad: " + this.personalDatas.Soyad);
+        this.doc.text(10, 50, "TC no: " + this.personalDatas.TCno);
+        this.doc.text(10, 60, "Dogum Tarihi: " + this.personalDatas.DTarih);
+        this.doc.text(10, 70, "Adres: " + this.personalDatas.Adres);
+        this.doc.text(110, 30, "Cinsiyet: " + this.personalDatas.Cinsiyet);
+        this.doc.text(110, 40, "Telefon no: " + this.personalDatas.Telno);
+        this.doc.text(110, 50, "Mail: " + this.personalDatas.Mail);
+        this.doc.text(10, 80, "--------------------------------------------------------------------------------------------------");
+        this.doc.text(85, 90, "Egitim Bilgileri");
+        this.doc.text(10, 100, "Lise Adi: " + this.educationDatas.LAd);
+        this.doc.text(10, 110, "Lise Türü: " + this.educationDatas.LTürü);
+        this.doc.text(110, 100, "Baslangic Tarihi: " + this.educationDatas.LBaTarih);
+        this.doc.text(110, 110, "Bitis Tarihi: " + this.educationDatas.LBiTarih);
+        this.doc.text(10, 120, "Lise Ortalamasi: " + this.educationDatas.LOrtalama);
+        this.doc.text(10, 140, "Universite Adi: " + this.educationDatas.UAd);
+        this.doc.text(10, 150, "Universite Bölümü: " + this.educationDatas.UTürü);
+        this.doc.text(110, 140, "Baslangic Tarihi: " + this.educationDatas.UBaTarih);
+        this.doc.text(110, 150, "Bitis Tarihi: " + this.educationDatas.UBiTarih);
+        this.doc.text(10, 160, "Universite Ortalamasi: " + this.educationDatas.UOrtalama);
+        this.doc.text(10, 180, "Yüksek Lisans Adi: " + this.educationDatas.YAd);
+        this.doc.text(10, 190, "Yüksek Lisans Türü: " + this.educationDatas.YTürü);
+        this.doc.text(110, 180, "Baslangic Tarihi: " + this.educationDatas.YBaTarih);
+        this.doc.text(110, 190, "Bitis Tarihi: " + this.educationDatas.YBiTarih);
         if (i == 1) {
         }
-        doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
-        doc.text(85, 210, "Deneyim Bilgileri");
-        doc.text(10, 220, "Sirket Adi: " + this.workDatas.SAd);
-        doc.text(110, 220, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih);
-        doc.text(110, 230, "Bitis Tarihi: " + this.workDatas.BiTarih);
-        doc.text(10, 230, "Pozisyonu: " + this.workDatas.FPozisyon);
-        doc.text(10, 250, "Is Tanimi: " + this.workDatas.Tanım);
-        doc.text(10, 240, "Sirketin Bulundugu Il: " + this.workDatas.Il);
-        doc.text(10, 265, "Sirket Adi: " + this.workDatas.SAd2);
-        doc.text(110, 265, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih2);
-        doc.text(110, 275, "Bitis Tarihi: " + this.workDatas.BiTarih2);
-        doc.text(10, 275, "Pozisyonu: " + this.workDatas.FPozisyon2);
-        doc.text(10, 295, "Is Tanimi: " + this.workDatas.Tanım2);
-        doc.text(10, 285, "Sirketin Bulundugu Il: " + this.workDatas.Il2);
-        doc2.text(10, 10, "Sirket Adi: " + this.workDatas.SAd3);
-        doc2.text(110, 10, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih3);
-        doc2.text(110, 20, "Bitis Tarihi: " + this.workDatas.BiTarih3);
-        doc2.text(10, 20, "Pozisyonu: " + this.workDatas.FPozisyon3);
-        doc2.text(10, 40, "Is Tanimi: " + this.workDatas.Tanım3);
-        doc2.text(10, 30, "Sirketin Bulundugu Il: " + this.workDatas.Il3);
-        doc2.text(10, 50, "Yabanci Dil: " + this.workDatas.YDil);
-        doc2.text(10, 60, "Yetenek: " + this.workDatas.Yetenek);
-        doc2.text(10, 70, "Sertifika: " + this.workDatas.Sertifika);
-        doc2.text(10, 80, "--------------------------------------------------------------------------------------------------");
-        doc2.text(85, 90, "Proje Bilgileri");
-        doc2.text(10, 100, "Proje Adi: " + this.workDatas.PAd);
-        doc2.text(10, 110, "Proje Konusu: " + this.workDatas.PKonu);
-        doc2.text(10, 120, "Proje Teknolojisi: " + this.workDatas.PTek);
-        doc2.text(10, 130, "Açiklama: " + this.workDatas.Açıklama);
-        doc2.text(10, 140, "Proje Adi: " + this.workDatas.PAd2);
-        doc2.text(10, 150, "Proje Konusu: " + this.workDatas.PKonu2);
-        doc2.text(10, 160, "Proje Teknolojisi: " + this.workDatas.PTek2);
-        doc2.text(10, 170, "Açiklama: " + this.workDatas.Açıklama2);
-        doc2.text(10, 180, "Proje Adi: " + this.workDatas.PAd2);
-        doc2.text(10, 190, "Proje Konusu: " + this.workDatas.PKonu2);
-        doc2.text(10, 200, "Proje Teknolojisi: " + this.workDatas.PTek2);
-        doc2.text(10, 210, "Açiklama: " + this.workDatas.Açıklama2);
-        doc2.text(10, 220, "--------------------------------------------------------------------------------------------------");
-        doc2.text(85, 230, "Sosyal Bilgileri");
-        doc2.text(10, 240, "Skype: " + this.workDatas.Skype);
-        doc2.text(10, 250, "Linkedin: " + this.workDatas.Linkedin);
-        doc2.text(10, 260, "GitHub: " + this.workDatas.GitHub);
-        doc2.text(10, 270, "Instagram: " + this.workDatas.Instagram);
-        doc2.text(10, 280, "Hobiler: " + this.workDatas.Hobiler);
+        this.doc.text(10, 200, "--------------------------------------------------------------------------------------------------");
+        this.doc.text(85, 210, "Deneyim Bilgileri");
+        this.doc.text(10, 220, "Sirket Adi: " + this.workDatas.SAd);
+        this.doc.text(110, 220, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih);
+        this.doc.text(110, 230, "Bitis Tarihi: " + this.workDatas.BiTarih);
+        this.doc.text(10, 230, "Pozisyonu: " + this.workDatas.FPozisyon);
+        this.doc.text(10, 250, "Is Tanimi: " + this.workDatas.Tanım);
+        this.doc.text(10, 240, "Sirketin Bulundugu Il: " + this.workDatas.Il);
+        this.doc.text(10, 265, "Sirket Adi: " + this.workDatas.SAd2);
+        this.doc.text(110, 265, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih2);
+        this.doc.text(110, 275, "Bitis Tarihi: " + this.workDatas.BiTarih2);
+        this.doc.text(10, 275, "Pozisyonu: " + this.workDatas.FPozisyon2);
+        this.doc.text(10, 295, "Is Tanimi: " + this.workDatas.Tanım2);
+        this.doc.text(10, 285, "Sirketin Bulundugu Il: " + this.workDatas.Il2);
+        this.doc2.text(10, 10, "Sirket Adi: " + this.workDatas.SAd3);
+        this.doc2.text(110, 10, "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih3);
+        this.doc2.text(110, 20, "Bitis Tarihi: " + this.workDatas.BiTarih3);
+        this.doc2.text(10, 20, "Pozisyonu: " + this.workDatas.FPozisyon3);
+        this.doc2.text(10, 40, "Is Tanimi: " + this.workDatas.Tanım3);
+        this.doc2.text(10, 30, "Sirketin Bulundugu Il: " + this.workDatas.Il3);
+        this.doc2.text(10, 50, "Yabanci Dil: " + this.workDatas.YDil);
+        this.doc2.text(10, 60, "Yetenek: " + this.workDatas.Yetenek);
+        this.doc2.text(10, 70, "Sertifika: " + this.workDatas.Sertifika);
+        this.doc2.text(10, 80, "--------------------------------------------------------------------------------------------------");
+        this.doc2.text(85, 90, "Proje Bilgileri");
+        this.doc2.text(10, 100, "Proje Adi: " + this.projectDatas.PAd);
+        this.doc2.text(10, 110, "Proje Konusu: " + this.projectDatas.PKonu);
+        this.doc2.text(10, 120, "Proje Teknolojisi: " + this.projectDatas.PTek);
+        this.doc2.text(10, 130, "Açiklama: " + this.projectDatas.Açıklama);
+        this.doc2.text(10, 140, "Proje Adi: " + this.projectDatas.PAd2);
+        this.doc2.text(10, 150, "Proje Konusu: " + this.projectDatas.PKonu2);
+        this.doc2.text(10, 160, "Proje Teknolojisi: " + this.projectDatas.PTek2);
+        this.doc2.text(10, 170, "Açiklama: " + this.projectDatas.Açıklama2);
+        this.doc2.text(10, 180, "Proje Adi: " + this.projectDatas.PAd2);
+        this.doc2.text(10, 190, "Proje Konusu: " + this.projectDatas.PKonu2);
+        this.doc2.text(10, 200, "Proje Teknolojisi: " + this.projectDatas.PTek2);
+        this.doc2.text(10, 210, "Açiklama: " + this.projectDatas.Açıklama2);
+        this.doc2.text(10, 220, "--------------------------------------------------------------------------------------------------");
+        this.doc2.text(85, 230, "Sosyal Bilgileri");
+        this.doc2.text(10, 240, "Skype: " + this.socialDatas.Skype);
+        this.doc2.text(10, 250, "Linkedin: " + this.socialDatas.Linkedin);
+        this.doc2.text(10, 260, "GitHub: " + this.socialDatas.GitHub);
+        this.doc2.text(10, 270, "Instagram: " + this.socialDatas.Instagram);
+        this.doc2.text(10, 280, "Hobiler: " + this.socialDatas.Hobiler);
         // for(var key in this.educationDatas){
         //   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
         //   i+=10;
@@ -247,15 +247,34 @@ var HomePage = (function () {
         //   doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
         //   i+=10;
         // }
-        // doc.save('CV.pdf');
-        // doc2.save('CV.pdf2');
+        this.doc.save('CV.pdf');
+        this.doc2.save('CV.pdf2');
+        // let email = {
+        //   to:'emircanuzel95@gmail.com',
+        //   attachment: [
+        //     // 'file://CV.pdf',
+        //   //  ' this.doc ',
+        //   //  this.doc.CV.pdf , 
+        //     // this.personalDatas,
+        //   ],
+        // subject:'CV ',
+        // body: 'Emircan UZEL' , 
+        // isHtml:true
+        // };
+        // this.emailComposer.open(email);
+    };
+    HomePage.prototype.mail = function () {
         var email = {
             to: 'emircanuzel95@gmail.com',
-            attachments: [
-                'file://CV.pdf'
+            attachment: [
+                __WEBPACK_IMPORTED_MODULE_2_jspdf__["doc"]
+                //  'file://CV.pdf',
+                //  ' this.doc ',
+                //  this.doc.CV.pdf , 
+                // this.personalDatas,
             ],
             subject: 'CV ',
-            body: 'emircan uzel <br><br>',
+            body: 'Emircan UZEL',
             isHtml: true
         };
         this.emailComposer.open(email);
@@ -264,7 +283,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button>\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button>\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n  <button ion-button block  (click)="mail()">Mail</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__["a" /* EmailComposer */]])
 ], HomePage);
