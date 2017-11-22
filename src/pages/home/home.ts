@@ -291,50 +291,31 @@ this.data= "Kisisel Bilgiler"+"<br>"+
 
 console.log(this.data);
 
-// let email = {
-//   to:'emircanuzel95@gmail.com',
+
+
+let email = {
+  to:'emircanuzel95@gmail.com',
   
-//   attachment: [
+  attachment: [
 
-    
-//     // 'file://CV.pdf',
-//   //  ' this.doc ',
-//   //  this.doc.CV.pdf , 
-//     // this.personalDatas,
-//   ],
-// subject:'CV ',
-// body: 'Emircan UZEL' , 
-// isHtml:true
-// };
-// this.emailComposer.open(email);
+    // 'res://CV.pdf'
+  //  'file://CV.pdf',
+  //  ' this.doc ',
+  //  this.doc.CV.pdf , 
+    // this.personalDatas,
 
 
-}
+  ],
+subject:'CV ',
+body:this.data ,
 
-mail(){
-
-  let email = {
-    to:'emircanuzel95@gmail.com',
-    
-    attachment: [
-  
-      // 'res://CV.pdf'
-    //  'file://CV.pdf',
-    //  ' this.doc ',
-    //  this.doc.CV.pdf , 
-      // this.personalDatas,
-
-
-    ],
-  subject:'CV ',
-  body:this.data ,
-
-   
-  isHtml:true
-  };
-  this.emailComposer.open(email);
+ 
+isHtml:true
+};
+this.emailComposer.open(email);
 
 
 }
 
 }
+

@@ -295,22 +295,26 @@ var HomePage = (function () {
             "Yabanci Dil: " + this.workDatas.YDil + "<br>" +
             "Yetenek: " + this.workDatas.Yetenek + "<br>" +
             "Sertifika: " + this.workDatas.Sertifika + "<br>" + "<br>" + "<br>" +
-            console.log(this.data);
-        // let email = {
-        //   to:'emircanuzel95@gmail.com',
-        //   attachment: [
-        //     // 'file://CV.pdf',
-        //   //  ' this.doc ',
-        //   //  this.doc.CV.pdf , 
-        //     // this.personalDatas,
-        //   ],
-        // subject:'CV ',
-        // body: 'Emircan UZEL' , 
-        // isHtml:true
-        // };
-        // this.emailComposer.open(email);
-    };
-    HomePage.prototype.mail = function () {
+            "Proje Bilgileri" + "<br>" +
+            "Proje Adi: " + this.projectDatas.PAd + "<br>" +
+            "Proje Konusu: " + this.projectDatas.PKonu + "<br>" +
+            "Proje Teknolojisi: " + this.projectDatas.PTek + "<br>" +
+            "Açiklama: " + this.projectDatas.Açıklama + "<br>" + "<br>" +
+            "Proje Adi: " + this.projectDatas.PAd2 + "<br>" +
+            "Proje Konusu: " + this.projectDatas.PKonu2 + "<br>" +
+            "Proje Teknolojisi: " + this.projectDatas.PTek2 + "<br>" +
+            "Açiklama: " + this.projectDatas.Açıklama2 + "<br>" + "<br>" +
+            "Proje Adi: " + this.projectDatas.PAd2 + "<br>" +
+            "Proje Konusu: " + this.projectDatas.PKonu2 + "<br>" +
+            "Proje Teknolojisi: " + this.projectDatas.PTek2 + "<br>" +
+            "Açiklama: " + this.projectDatas.Açıklama2 + "<br>" + "<br>" + "<br>" +
+            "Sosyal Bilgileri" + "<br>" +
+            "Skype: " + this.socialDatas.Skype + "<br>" +
+            "Linkedin: " + this.socialDatas.Linkedin + "<br>" +
+            "GitHub: " + this.socialDatas.GitHub + "<br>" +
+            "Instagram: " + this.socialDatas.Instagram + "<br>" +
+            "Hobiler: " + this.socialDatas.Hobiler + "<br>" + "<br>" + "<br>" + "<br>" + "Mirsis Bilgi Teknolojileri...";
+        console.log(this.data);
         var email = {
             to: 'emircanuzel95@gmail.com',
             attachment: [],
@@ -324,7 +328,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button>\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n  <button ion-button block  (click)="mail()">Mail</button>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <!-- <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button> -->\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__["a" /* EmailComposer */]])
 ], HomePage);
