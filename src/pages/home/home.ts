@@ -21,6 +21,8 @@ export class HomePage {
       public photoDatas: any ={};
       public doc = new jsPDF();
       public doc2 = new jsPDF();
+      public data : string;
+      
       
 
   openModalKisisel(){
@@ -217,11 +219,77 @@ this.doc.text(10,200 , "--------------------------------------------------------
 //   doc.text(20, 10 + i, key + ": " + this.socialDatas[key]);
 //   i+=10;
 // }
-this.doc.save('CV.pdf');
- this.doc2.save('CV.pdf2');
+// this.doc.save('CV.pdf');
+//  this.doc2.save('CV.pdf2');
 
 
+this.data= "Kisisel Bilgiler"+"<br>"+
+"Ad: "+this.personalDatas.Ad+"<br>"+
+"Soyad: "+this.personalDatas.Soyad+"<br>"+
+"TC no: "+ this.personalDatas.TCno+"<br>"+
+"Dogum Tarihi: "+ this.personalDatas.DTarih+"<br>"+
+"Adres: "+ this.personalDatas.Adres+"<br>"+
+"Cinsiyet: "+ this.personalDatas.Cinsiyet+"<br>"+
+"Telefon no: "+ this.personalDatas.Telno+"<br>"+
+"Mail: "+ this.personalDatas.Mail+"<br>"+"<br>"+"<br>"+
+ "Egitim Bilgileri"+"<br>"+
+ "Lise Adi: "+ this.educationDatas.LAd+"<br>"+
+ "Lise Türü: "+ this.educationDatas.LTürü+"<br>"+
+ "Baslangic Tarihi: "+ this.educationDatas.LBaTarih+"<br>"+
+ "Bitis Tarihi: "+ this.educationDatas.LBiTarih+"<br>"+
+"Lise Ortalamasi: "+ this.educationDatas.LOrtalama+"<br>"+"<br>"+
+ "Universite Adi: "+ this.educationDatas.UAd+"<br>"+
+ "Universite Bölümü: "+ this.educationDatas.UTürü+"<br>"+
+ "Baslangic Tarihi: "+ this.educationDatas.UBaTarih+"<br>"+
+ "Bitis Tarihi: "+ this.educationDatas.UBiTarih+"<br>"+
+ "Universite Ortalamasi: "+ this.educationDatas.UOrtalama+"<br>"+"<br>"+
+ "Yüksek Lisans Adi: "+ this.educationDatas.YAd+"<br>"+
+"Yüksek Lisans Türü: "+ this.educationDatas.YTürü+"<br>"+
+ "Baslangic Tarihi: "+ this.educationDatas.YBaTarih+"<br>"+
+ "Bitis Tarihi: "+ this.educationDatas.YBiTarih+"<br>"+"<br>"+"<br>"+
+ "Deneyim Bilgileri"+"<br>"+
+  "Sirket Adi: "+ this.workDatas.SAd+"<br>"+
+  "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih+"<br>"+
+ "Bitis Tarihi: "+ this.workDatas.BiTarih+"<br>"+
+ "Pozisyonu: "+ this.workDatas.FPozisyon+"<br>"+
+ "Is Tanimi: "+ this.workDatas.Tanım+"<br>"+
+ "Sirketin Bulundugu Il: "+ this.workDatas.Il+"<br>"+"<br>"+
+ "Sirket Adi: "+ this.workDatas.SAd2+"<br>"+
+ "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2+"<br>"+
+ "Bitis Tarihi: "+ this.workDatas.BiTarih2+"<br>"+
+ "Pozisyonu: "+ this.workDatas.FPozisyon2+"<br>"+
+  "Is Tanimi: "+ this.workDatas.Tanım2+"<br>"+
+ "Sirketin Bulundugu Il: "+ this.workDatas.Il2+"<br>"+"<br>"+
+"Sirket Adi: "+ this.workDatas.SAd3+"<br>"+
+ "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3+"<br>"+
+ "Bitis Tarihi: "+ this.workDatas.BiTarih3+"<br>"+
+ "Pozisyonu: "+ this.workDatas.FPozisyon3+"<br>"+
+ "Is Tanimi: "+ this.workDatas.Tanım3+"<br>"+
+ "Sirketin Bulundugu Il: "+ this.workDatas.Il3+"<br>"+"<br>"+
+ "Yabanci Dil: "+ this.workDatas.YDil+"<br>"+
+ "Yetenek: "+ this.workDatas.Yetenek+"<br>"+
+ "Sertifika: "+ this.workDatas.Sertifika+"<br>"+"<br>"+"<br>"+
+ "Proje Bilgileri"+"<br>"+
+ "Proje Adi: "+ this.projectDatas.PAd+"<br>"+
+ "Proje Konusu: "+ this.projectDatas.PKonu+"<br>"+
+ "Proje Teknolojisi: "+ this.projectDatas.PTek+"<br>"+
+"Açiklama: "+ this.projectDatas.Açıklama+"<br>"+"<br>"+  
+ "Proje Adi: "+ this.projectDatas.PAd2+"<br>"+
+"Proje Konusu: "+ this.projectDatas.PKonu2+"<br>"+
+ "Proje Teknolojisi: "+ this.projectDatas.PTek2+"<br>"+
+  "Açiklama: "+ this.projectDatas.Açıklama2+"<br>"+"<br>"+  
+"Proje Adi: "+ this.projectDatas.PAd2+"<br>"+
+"Proje Konusu: "+ this.projectDatas.PKonu2+"<br>"+
+ "Proje Teknolojisi: "+ this.projectDatas.PTek2+"<br>"+
+ "Açiklama: "+ this.projectDatas.Açıklama2+"<br>"+"<br>"+"<br>"+
+"Sosyal Bilgileri"+"<br>"+
+  "Skype: "+ this.socialDatas.Skype+"<br>"+
+ "Linkedin: "+ this.socialDatas.Linkedin+"<br>"+
+ "GitHub: "+ this.socialDatas.GitHub+"<br>"+
+ "Instagram: "+ this.socialDatas.Instagram+"<br>"+
+ "Hobiler: "+ this.socialDatas.Hobiler+"<br>"+"<br>"+"<br>"+"<br>"+"Mirsis Bilgi Teknolojileri..."
 
+console.log(this.data);
 
 // let email = {
 //   to:'emircanuzel95@gmail.com',
@@ -250,7 +318,7 @@ mail(){
     
     attachment: [
   
-      'res://CV.pdf'
+      // 'res://CV.pdf'
     //  'file://CV.pdf',
     //  ' this.doc ',
     //  this.doc.CV.pdf , 
@@ -259,7 +327,9 @@ mail(){
 
     ],
   subject:'CV ',
-  body: 'Emircan UZEL' , 
+  body:this.data ,
+
+   
   isHtml:true
   };
   this.emailComposer.open(email);
