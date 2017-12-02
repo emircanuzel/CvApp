@@ -21,7 +21,7 @@ export class HomePage {
       public photoDatas: any ={};
       public doc = new jsPDF();
       public doc2 = new jsPDF();
-      public data : string;
+      public pdfbody : string;
       
       
 
@@ -223,7 +223,7 @@ this.doc.text(10,200 , "--------------------------------------------------------
 //  this.doc2.save('CV.pdf2');
 
 
-this.data= "Kisisel Bilgiler"+"<br>"+
+this.pdfbody= "Kisisel Bilgiler"+"<br>"+
 "Ad: "+this.personalDatas.Ad+"<br>"+
 "Soyad: "+this.personalDatas.Soyad+"<br>"+
 "TC no: "+ this.personalDatas.TCno+"<br>"+
@@ -289,7 +289,7 @@ this.data= "Kisisel Bilgiler"+"<br>"+
  "Instagram: "+ this.socialDatas.Instagram+"<br>"+
  "Hobiler: "+ this.socialDatas.Hobiler+"<br>"+"<br>"+"<br>"+"<br>"+"Mirsis Bilgi Teknolojileri..."
 
-console.log(this.data);
+console.log(this.pdfbody);
 
 
 
@@ -307,7 +307,7 @@ let email = {
 
   ],
 subject:'CV ',
-body:this.data ,
+body:this.pdfbody ,
 
  
 isHtml:true
