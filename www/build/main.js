@@ -85,7 +85,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-//import * as jsPDF from 'jspdf'; 
+// import * as jsPDF from 'jspdf'; 
 
 
 
