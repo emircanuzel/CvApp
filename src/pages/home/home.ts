@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Modal } from 'ionic-angular';
+// import * as jsPDF from 'jspdf'; 
 import { EmailComposer } from '@ionic-native/email-composer';
 
 
@@ -26,6 +27,8 @@ export class HomePage {
     public workDatas: any ={};
       public projectDatas: any ={};
       public photoDatas: any ={};
+    //  public doc = new jsPDF();
+    //   public doc2 = new jsPDF();
       public pdfbody : string;
       
       
