@@ -1,7 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController, Modal } from 'ionic-angular';
-import * as jsPDF from 'jspdf'; 
+//import * as jsPDF from 'jspdf'; 
 import { EmailComposer } from '@ionic-native/email-composer';
+
+
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+
 
 
 @Component({
@@ -10,7 +17,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController , private modal:ModalController,private emailComposer:EmailComposer) {
+
+  constructor(public navCtrl: NavController , public modal:ModalController,public emailComposer:EmailComposer) {
 
   }
     public personalDatas: any = {};
@@ -19,9 +27,9 @@ export class HomePage {
     public workDatas: any ={};
       public projectDatas: any ={};
       public photoDatas: any ={};
-      public doc = new jsPDF();
-      public doc2 = new jsPDF();
-      public data : string;
+      // public doc = new jsPDF();
+      // public doc2 = new jsPDF();
+      public pdfbody : string;
       
       
 
@@ -90,6 +98,52 @@ const Foto = this.modal.create('PhotoPage')
 
 }
 
+timeOut(upperArr) {
+  // var now = moment().format("DD.MM.YYYY");
+  var pdfdocument = this.generatePDF(upperArr);
+  const pdfDocGenerator = pdfMake.createPdf(pdfdocument);
+  pdfMake.createPdf(pdfdocument).download();
+  console.log("timeout  " );
+
+  pdfDocGenerator.getBase64((data) => {
+    console.log("1  " );
+    this.emailComposer.open({
+      
+      to: 'emircanuzel95@gmail.com',
+      subject: 'CV UYGULAMASI',
+      body: ' Mirsis Bilgi Teknolojileri ',
+      attachments: ['base64:CV.pdf//' + data],
+      isHtml: true
+    });
+    console.log("2  " );
+  })
+}
+
+
+
+generatePDF(tableContent) {
+  console.log("generatepdf " );
+  var docDefinition = {
+    content: [
+      { text: tableContent, style: 'header' },
+      
+     
+   
+    ],
+    styles: {
+      header: {
+        fontSize: 14,
+       
+       
+      },
+     
+    }
+  };
+  
+  return docDefinition;
+  
+}
+
 openOnayla(){
 
 
@@ -101,8 +155,8 @@ console.log(this.projectDatas);
 console.log(this.photoDatas);
 
 
-var i=0;
-i=this.workDatas.Sayac;
+// var i=0;
+// i=this.workDatas.Sayac;
 
 
 // for(var key in this.personalDatas){
@@ -110,98 +164,94 @@ i=this.workDatas.Sayac;
 //    i+=10;
 // }
 
-this.doc.text(85,10 , "Kisisel Bilgiler")
-this.doc.text(10,30 , "Ad: "+ this.personalDatas.Ad)
-this.doc.text(10,40 , "Soyad: "+ this.personalDatas.Soyad)
-this.doc.text(10,50 , "TC no: "+ this.personalDatas.TCno)
-this.doc.text(10,60 , "Dogum Tarihi: "+ this.personalDatas.DTarih)
-this.doc.text(10,70 , "Adres: "+ this.personalDatas.Adres)
-this.doc.text(110,30 , "Cinsiyet: "+ this.personalDatas.Cinsiyet)
-this.doc.text(110,40 , "Telefon no: "+ this.personalDatas.Telno)
-this.doc.text(110,50 , "Mail: "+ this.personalDatas.Mail)
+// this.doc.text(85,10 , "Kisisel Bilgiler")
+// this.doc.text(10,30 , "Ad: "+ this.personalDatas.Ad)
+// this.doc.text(10,40 , "Soyad: "+ this.personalDatas.Soyad)
+// this.doc.text(10,50 , "TC no: "+ this.personalDatas.TCno)
+// this.doc.text(10,60 , "Dogum Tarihi: "+ this.personalDatas.DTarih)
+// this.doc.text(10,70 , "Adres: "+ this.personalDatas.Adres)
+// this.doc.text(110,30 , "Cinsiyet: "+ this.personalDatas.Cinsiyet)
+// this.doc.text(110,40 , "Telefon no: "+ this.personalDatas.Telno)
+// this.doc.text(110,50 , "Mail: "+ this.personalDatas.Mail)
 
 
 
-this.doc.text(10,80 , "--------------------------------------------------------------------------------------------------")
-this.doc.text(85,90 , "Egitim Bilgileri")
-this.doc.text(10,100 , "Lise Adi: "+ this.educationDatas.LAd)
-this.doc.text(10,110 , "Lise Türü: "+ this.educationDatas.LTürü)
-this.doc.text(110,100 , "Baslangic Tarihi: "+ this.educationDatas.LBaTarih)
-this.doc.text(110,110 , "Bitis Tarihi: "+ this.educationDatas.LBiTarih)
-this.doc.text(10,120 , "Lise Ortalamasi: "+ this.educationDatas.LOrtalama)
+// this.doc.text(10,80 , "--------------------------------------------------------------------------------------------------")
+// this.doc.text(85,90 , "Egitim Bilgileri")
+// this.doc.text(10,100 , "Lise Adi: "+ this.educationDatas.LAd)
+// this.doc.text(10,110 , "Lise Türü: "+ this.educationDatas.LTürü)
+// this.doc.text(110,100 , "Baslangic Tarihi: "+ this.educationDatas.LBaTarih)
+// this.doc.text(110,110 , "Bitis Tarihi: "+ this.educationDatas.LBiTarih)
+// this.doc.text(10,120 , "Lise Ortalamasi: "+ this.educationDatas.LOrtalama)
 
-this.doc.text(10,140 , "Universite Adi: "+ this.educationDatas.UAd)
-this.doc.text(10,150 , "Universite Bölümü: "+ this.educationDatas.UTürü)
-this.doc.text(110,140 , "Baslangic Tarihi: "+ this.educationDatas.UBaTarih)
-this.doc.text(110,150 , "Bitis Tarihi: "+ this.educationDatas.UBiTarih)
-this.doc.text(10,160 , "Universite Ortalamasi: "+ this.educationDatas.UOrtalama)
+// this.doc.text(10,140 , "Universite Adi: "+ this.educationDatas.UAd)
+// this.doc.text(10,150 , "Universite Bölümü: "+ this.educationDatas.UTürü)
+// this.doc.text(110,140 , "Baslangic Tarihi: "+ this.educationDatas.UBaTarih)
+// this.doc.text(110,150 , "Bitis Tarihi: "+ this.educationDatas.UBiTarih)
+// this.doc.text(10,160 , "Universite Ortalamasi: "+ this.educationDatas.UOrtalama)
 
-this.doc.text(10,180 , "Yüksek Lisans Adi: "+ this.educationDatas.YAd)
-this.doc.text(10,190 , "Yüksek Lisans Türü: "+ this.educationDatas.YTürü)
-this.doc.text(110,180 , "Baslangic Tarihi: "+ this.educationDatas.YBaTarih)
-this.doc.text(110,190 , "Bitis Tarihi: "+ this.educationDatas.YBiTarih)
+// this.doc.text(10,180 , "Yüksek Lisans Adi: "+ this.educationDatas.YAd)
+// this.doc.text(10,190 , "Yüksek Lisans Türü: "+ this.educationDatas.YTürü)
+// this.doc.text(110,180 , "Baslangic Tarihi: "+ this.educationDatas.YBaTarih)
+// this.doc.text(110,190 , "Bitis Tarihi: "+ this.educationDatas.YBiTarih)
 
-if(i==1){
+// this.doc.text(10,200 , "--------------------------------------------------------------------------------------------------")
 
+//   this.doc.text(85,210 , "Deneyim Bilgileri")
+//   this.doc.text(10,220 , "Sirket Adi: "+ this.workDatas.SAd)
+//   this.doc.text(110,220 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih)
+//   this.doc.text(110,230 , "Bitis Tarihi: "+ this.workDatas.BiTarih)
+//   this.doc.text(10,230 , "Pozisyonu: "+ this.workDatas.FPozisyon)
+//   this.doc.text(10,250 , "Is Tanimi: "+ this.workDatas.Tanım)
+//   this.doc.text(10,240 , "Sirketin Bulundugu Il: "+ this.workDatas.Il)
 
-}
-this.doc.text(10,200 , "--------------------------------------------------------------------------------------------------")
-
-  this.doc.text(85,210 , "Deneyim Bilgileri")
-  this.doc.text(10,220 , "Sirket Adi: "+ this.workDatas.SAd)
-  this.doc.text(110,220 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih)
-  this.doc.text(110,230 , "Bitis Tarihi: "+ this.workDatas.BiTarih)
-  this.doc.text(10,230 , "Pozisyonu: "+ this.workDatas.FPozisyon)
-  this.doc.text(10,250 , "Is Tanimi: "+ this.workDatas.Tanım)
-  this.doc.text(10,240 , "Sirketin Bulundugu Il: "+ this.workDatas.Il)
-
-  this.doc.text(10,265 , "Sirket Adi: "+ this.workDatas.SAd2)
-  this.doc.text(110,265 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2)
-  this.doc.text(110,275 , "Bitis Tarihi: "+ this.workDatas.BiTarih2)
-  this.doc.text(10,275 , "Pozisyonu: "+ this.workDatas.FPozisyon2)
-  this.doc.text(10,295 , "Is Tanimi: "+ this.workDatas.Tanım2)
-  this.doc.text(10,285 , "Sirketin Bulundugu Il: "+ this.workDatas.Il2)
+//   this.doc.text(10,265 , "Sirket Adi: "+ this.workDatas.SAd2)
+//   this.doc.text(110,265 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2)
+//   this.doc.text(110,275 , "Bitis Tarihi: "+ this.workDatas.BiTarih2)
+//   this.doc.text(10,275 , "Pozisyonu: "+ this.workDatas.FPozisyon2)
+//   this.doc.text(10,295 , "Is Tanimi: "+ this.workDatas.Tanım2)
+//   this.doc.text(10,285 , "Sirketin Bulundugu Il: "+ this.workDatas.Il2)
 
 
-  this.doc2.text(10,10 , "Sirket Adi: "+ this.workDatas.SAd3)
-  this.doc2.text(110,10 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3)
-  this.doc2.text(110,20 , "Bitis Tarihi: "+ this.workDatas.BiTarih3)
-  this.doc2.text(10,20 , "Pozisyonu: "+ this.workDatas.FPozisyon3)
-  this.doc2.text(10,40 , "Is Tanimi: "+ this.workDatas.Tanım3)
-  this.doc2.text(10,30 , "Sirketin Bulundugu Il: "+ this.workDatas.Il3)
+//   this.doc2.text(10,10 , "Sirket Adi: "+ this.workDatas.SAd3)
+//   this.doc2.text(110,10 , "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3)
+//   this.doc2.text(110,20 , "Bitis Tarihi: "+ this.workDatas.BiTarih3)
+//   this.doc2.text(10,20 , "Pozisyonu: "+ this.workDatas.FPozisyon3)
+//   this.doc2.text(10,40 , "Is Tanimi: "+ this.workDatas.Tanım3)
+//   this.doc2.text(10,30 , "Sirketin Bulundugu Il: "+ this.workDatas.Il3)
 
-  this.doc2.text(10,50 , "Yabanci Dil: "+ this.workDatas.YDil)
-  this.doc2.text(10,60 , "Yetenek: "+ this.workDatas.Yetenek)
-  this.doc2.text(10,70 , "Sertifika: "+ this.workDatas.Sertifika)
+//   this.doc2.text(10,50 , "Yabanci Dil: "+ this.workDatas.YDil)
+//   this.doc2.text(10,60 , "Yetenek: "+ this.workDatas.Yetenek)
+//   this.doc2.text(10,70 , "Sertifika: "+ this.workDatas.Sertifika)
 
- this.doc2.text(10,80 , "--------------------------------------------------------------------------------------------------")
- this.doc2.text(85,90 , "Proje Bilgileri")
+//  this.doc2.text(10,80 , "--------------------------------------------------------------------------------------------------")
+//  this.doc2.text(85,90 , "Proje Bilgileri")
 
-  this.doc2.text(10,100 , "Proje Adi: "+ this.projectDatas.PAd)
-  this.doc2.text(10,110 , "Proje Konusu: "+ this.projectDatas.PKonu)
-  this.doc2.text(10,120 , "Proje Teknolojisi: "+ this.projectDatas.PTek)
-  this.doc2.text(10,130 , "Açiklama: "+ this.projectDatas.Açıklama)
+//   this.doc2.text(10,100 , "Proje Adi: "+ this.projectDatas.PAd)
+//   this.doc2.text(10,110 , "Proje Konusu: "+ this.projectDatas.PKonu)
+//   this.doc2.text(10,120 , "Proje Teknolojisi: "+ this.projectDatas.PTek)
+//   this.doc2.text(10,130 , "Açiklama: "+ this.projectDatas.Açıklama)
 
   
-  this.doc2.text(10,140 , "Proje Adi: "+ this.projectDatas.PAd2)
-  this.doc2.text(10,150 , "Proje Konusu: "+ this.projectDatas.PKonu2)
-  this.doc2.text(10,160 , "Proje Teknolojisi: "+ this.projectDatas.PTek2)
-  this.doc2.text(10,170 , "Açiklama: "+ this.projectDatas.Açıklama2)
+//   this.doc2.text(10,140 , "Proje Adi: "+ this.projectDatas.PAd2)
+//   this.doc2.text(10,150 , "Proje Konusu: "+ this.projectDatas.PKonu2)
+//   this.doc2.text(10,160 , "Proje Teknolojisi: "+ this.projectDatas.PTek2)
+//   this.doc2.text(10,170 , "Açiklama: "+ this.projectDatas.Açıklama2)
 
   
-  this.doc2.text(10,180 , "Proje Adi: "+ this.projectDatas.PAd2)
-  this.doc2.text(10,190 , "Proje Konusu: "+ this.projectDatas.PKonu2)
-  this.doc2.text(10,200 , "Proje Teknolojisi: "+ this.projectDatas.PTek2)
-  this.doc2.text(10,210 , "Açiklama: "+ this.projectDatas.Açıklama2)
+//   this.doc2.text(10,180 , "Proje Adi: "+ this.projectDatas.PAd2)
+//   this.doc2.text(10,190 , "Proje Konusu: "+ this.projectDatas.PKonu2)
+//   this.doc2.text(10,200 , "Proje Teknolojisi: "+ this.projectDatas.PTek2)
+//   this.doc2.text(10,210 , "Açiklama: "+ this.projectDatas.Açıklama2)
 
-  this.doc2.text(10,220 , "--------------------------------------------------------------------------------------------------")
-  this.doc2.text(85,230 , "Sosyal Bilgileri")
+//   this.doc2.text(10,220 , "--------------------------------------------------------------------------------------------------")
+//   this.doc2.text(85,230 , "Sosyal Bilgileri")
 
-  this.doc2.text(10,240 , "Skype: "+ this.socialDatas.Skype)
-  this.doc2.text(10,250 , "Linkedin: "+ this.socialDatas.Linkedin)
-  this.doc2.text(10,260 , "GitHub: "+ this.socialDatas.GitHub)
-  this.doc2.text(10,270 , "Instagram: "+ this.socialDatas.Instagram)
-  this.doc2.text(10,280 , "Hobiler: "+ this.socialDatas.Hobiler)
+//   this.doc2.text(10,240 , "Skype: "+ this.socialDatas.Skype)
+//   this.doc2.text(10,250 , "Linkedin: "+ this.socialDatas.Linkedin)
+//   this.doc2.text(10,260 , "GitHub: "+ this.socialDatas.GitHub)
+//   this.doc2.text(10,270 , "Instagram: "+ this.socialDatas.Instagram)
+//   this.doc2.text(10,280 , "Hobiler: "+ this.socialDatas.Hobiler)
 
 // for(var key in this.educationDatas){
 //   doc.text(50, 20 + i, key + ": " + this.educationDatas[key]);
@@ -223,96 +273,181 @@ this.doc.text(10,200 , "--------------------------------------------------------
 //  this.doc2.save('CV.pdf2');
 
 
-this.data= "Kisisel Bilgiler"+"<br>"+
-"Ad: "+this.personalDatas.Ad+"<br>"+
-"Soyad: "+this.personalDatas.Soyad+"<br>"+
-"TC no: "+ this.personalDatas.TCno+"<br>"+
-"Dogum Tarihi: "+ this.personalDatas.DTarih+"<br>"+
-"Adres: "+ this.personalDatas.Adres+"<br>"+
-"Cinsiyet: "+ this.personalDatas.Cinsiyet+"<br>"+
-"Telefon no: "+ this.personalDatas.Telno+"<br>"+
-"Mail: "+ this.personalDatas.Mail+"<br>"+"<br>"+"<br>"+
- "Egitim Bilgileri"+"<br>"+
- "Lise Adi: "+ this.educationDatas.LAd+"<br>"+
- "Lise Türü: "+ this.educationDatas.LTürü+"<br>"+
- "Baslangic Tarihi: "+ this.educationDatas.LBaTarih+"<br>"+
- "Bitis Tarihi: "+ this.educationDatas.LBiTarih+"<br>"+
-"Lise Ortalamasi: "+ this.educationDatas.LOrtalama+"<br>"+"<br>"+
- "Universite Adi: "+ this.educationDatas.UAd+"<br>"+
- "Universite Bölümü: "+ this.educationDatas.UTürü+"<br>"+
- "Baslangic Tarihi: "+ this.educationDatas.UBaTarih+"<br>"+
- "Bitis Tarihi: "+ this.educationDatas.UBiTarih+"<br>"+
- "Universite Ortalamasi: "+ this.educationDatas.UOrtalama+"<br>"+"<br>"+
- "Yüksek Lisans Adi: "+ this.educationDatas.YAd+"<br>"+
-"Yüksek Lisans Türü: "+ this.educationDatas.YTürü+"<br>"+
- "Baslangic Tarihi: "+ this.educationDatas.YBaTarih+"<br>"+
- "Bitis Tarihi: "+ this.educationDatas.YBiTarih+"<br>"+"<br>"+"<br>"+
- "Deneyim Bilgileri"+"<br>"+
-  "Sirket Adi: "+ this.workDatas.SAd+"<br>"+
-  "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih+"<br>"+
- "Bitis Tarihi: "+ this.workDatas.BiTarih+"<br>"+
- "Pozisyonu: "+ this.workDatas.FPozisyon+"<br>"+
- "Is Tanimi: "+ this.workDatas.Tanım+"<br>"+
- "Sirketin Bulundugu Il: "+ this.workDatas.Il+"<br>"+"<br>"+
- "Sirket Adi: "+ this.workDatas.SAd2+"<br>"+
- "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2+"<br>"+
- "Bitis Tarihi: "+ this.workDatas.BiTarih2+"<br>"+
- "Pozisyonu: "+ this.workDatas.FPozisyon2+"<br>"+
-  "Is Tanimi: "+ this.workDatas.Tanım2+"<br>"+
- "Sirketin Bulundugu Il: "+ this.workDatas.Il2+"<br>"+"<br>"+
-"Sirket Adi: "+ this.workDatas.SAd3+"<br>"+
- "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3+"<br>"+
- "Bitis Tarihi: "+ this.workDatas.BiTarih3+"<br>"+
- "Pozisyonu: "+ this.workDatas.FPozisyon3+"<br>"+
- "Is Tanimi: "+ this.workDatas.Tanım3+"<br>"+
- "Sirketin Bulundugu Il: "+ this.workDatas.Il3+"<br>"+"<br>"+
- "Yabanci Dil: "+ this.workDatas.YDil+"<br>"+
- "Yetenek: "+ this.workDatas.Yetenek+"<br>"+
- "Sertifika: "+ this.workDatas.Sertifika+"<br>"+"<br>"+"<br>"+
- "Proje Bilgileri"+"<br>"+
- "Proje Adi: "+ this.projectDatas.PAd+"<br>"+
- "Proje Konusu: "+ this.projectDatas.PKonu+"<br>"+
- "Proje Teknolojisi: "+ this.projectDatas.PTek+"<br>"+
-"Açiklama: "+ this.projectDatas.Açıklama+"<br>"+"<br>"+  
- "Proje Adi: "+ this.projectDatas.PAd2+"<br>"+
-"Proje Konusu: "+ this.projectDatas.PKonu2+"<br>"+
- "Proje Teknolojisi: "+ this.projectDatas.PTek2+"<br>"+
-  "Açiklama: "+ this.projectDatas.Açıklama2+"<br>"+"<br>"+  
-"Proje Adi: "+ this.projectDatas.PAd2+"<br>"+
-"Proje Konusu: "+ this.projectDatas.PKonu2+"<br>"+
- "Proje Teknolojisi: "+ this.projectDatas.PTek2+"<br>"+
- "Açiklama: "+ this.projectDatas.Açıklama2+"<br>"+"<br>"+"<br>"+
-"Sosyal Bilgileri"+"<br>"+
-  "Skype: "+ this.socialDatas.Skype+"<br>"+
- "Linkedin: "+ this.socialDatas.Linkedin+"<br>"+
- "GitHub: "+ this.socialDatas.GitHub+"<br>"+
- "Instagram: "+ this.socialDatas.Instagram+"<br>"+
- "Hobiler: "+ this.socialDatas.Hobiler+"<br>"+"<br>"+"<br>"+"<br>"+"Mirsis Bilgi Teknolojileri..."
+this.pdfbody= "Kisisel Bilgiler"+"\n"+
+"Ad: "+this.personalDatas.Ad+"\n"+
+"Soyad: "+this.personalDatas.Soyad+"\n"+
+"TC no: "+ this.personalDatas.TCno+"\n"+
+"Dogum Tarihi: "+ this.personalDatas.DTarih+"\n"+
+"Adres: "+ this.personalDatas.Adres+"\n"+
+"Cinsiyet: "+ this.personalDatas.Cinsiyet+"\n"+
+"Telefon no: "+ this.personalDatas.Telno+"\n"+
+"Mail: "+ this.personalDatas.Mail+"\n"+"\n"+"\n"+
+ "Egitim Bilgileri"+"\n"+
+ "Lise Adi: "+ this.educationDatas.LAd+"\n"+
+ "Lise Türü: "+ this.educationDatas.LTürü+"\n"+
+ "Baslangic Tarihi: "+ this.educationDatas.LBaTarih+"\n"+
+ "Bitis Tarihi: "+ this.educationDatas.LBiTarih+"\n"+
+"Lise Ortalamasi: "+ this.educationDatas.LOrtalama+"\n"+"\n"+
+ "Universite Adi: "+ this.educationDatas.UAd+"\n"+
+ "Universite Bölümü: "+ this.educationDatas.UTürü+"\n"+
+ "Baslangic Tarihi: "+ this.educationDatas.UBaTarih+"\n"+
+ "Bitis Tarihi: "+ this.educationDatas.UBiTarih+"\n"+
+ "Universite Ortalamasi: "+ this.educationDatas.UOrtalama+"\n"+"\n"+
+ "Yüksek Lisans Adi: "+ this.educationDatas.YAd+"\n"+
+"Yüksek Lisans Türü: "+ this.educationDatas.YTürü+"\n"+
+ "Baslangic Tarihi: "+ this.educationDatas.YBaTarih+"\n"+
+ "Bitis Tarihi: "+ this.educationDatas.YBiTarih+"\n"+"\n"+"\n"+
+ "Deneyim Bilgileri"+"\n"+
+  "Sirket Adi: "+ this.workDatas.SAd+"\n"+
+  "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih+"\n"+
+ "Bitis Tarihi: "+ this.workDatas.BiTarih+"\n"+
+ "Pozisyonu: "+ this.workDatas.FPozisyon+"\n"+
+ "Is Tanimi: "+ this.workDatas.Tanım+"\n"+
+ "Sirketin Bulundugu Il: "+ this.workDatas.Il+"\n"+"\n"+
+ "Sirket Adi: "+ this.workDatas.SAd2+"\n"+
+ "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2+"\n"+
+ "Bitis Tarihi: "+ this.workDatas.BiTarih2+"\n"+
+ "Pozisyonu: "+ this.workDatas.FPozisyon2+"\n"+
+  "Is Tanimi: "+ this.workDatas.Tanım2+"\n"+
+ "Sirketin Bulundugu Il: "+ this.workDatas.Il2+"\n"+"\n"+
+"Sirket Adi: "+ this.workDatas.SAd3+"\n"+
+ "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3+"\n"+
+ "Bitis Tarihi: "+ this.workDatas.BiTarih3+"\n"+
+ "Pozisyonu: "+ this.workDatas.FPozisyon3+"\n"+
+ "Is Tanimi: "+ this.workDatas.Tanım3+"\n"+
+ "Sirketin Bulundugu Il: "+ this.workDatas.Il3+"\n"+"\n"+
+ "Yabanci Dil: "+ this.workDatas.YDil+"\n"+
+ "Yetenek: "+ this.workDatas.Yetenek+"\n"+
+ "Sertifika: "+ this.workDatas.Sertifika+"\n"+"\n"+"\n"+
+ "Proje Bilgileri"+"\n"+
+ "Proje Adi: "+ this.projectDatas.PAd+"\n"+
+ "Proje Konusu: "+ this.projectDatas.PKonu+"\n"+
+ "Proje Teknolojisi: "+ this.projectDatas.PTek+"\n"+
+"Açiklama: "+ this.projectDatas.Açıklama+"\n"+"\n"+  
+ "Proje Adi: "+ this.projectDatas.PAd2+"\n"+
+"Proje Konusu: "+ this.projectDatas.PKonu2+"\n"+
+ "Proje Teknolojisi: "+ this.projectDatas.PTek2+"\n"+
+  "Açiklama: "+ this.projectDatas.Açıklama2+"\n"+"\n"+  
+"Proje Adi: "+ this.projectDatas.PAd2+"\n"+
+"Proje Konusu: "+ this.projectDatas.PKonu2+"\n"+
+ "Proje Teknolojisi: "+ this.projectDatas.PTek2+"\n"+
+ "Açiklama: "+ this.projectDatas.Açıklama2+"\n"+"\n"+"\n"+
+"Sosyal Bilgileri"+"\n"+
+  "Skype: "+ this.socialDatas.Skype+"\n"+
+ "Linkedin: "+ this.socialDatas.Linkedin+"\n"+
+ "GitHub: "+ this.socialDatas.GitHub+"\n"+
+ "Instagram: "+ this.socialDatas.Instagram+"\n"+
+ "Hobiler: "+ this.socialDatas.Hobiler
 
-console.log(this.data);
+console.log(this.pdfbody);
 
 
 
-let email = {
-  to:'emircanuzel95@gmail.com',
+// let email = {
+//   to:'emircanuzel95@gmail.com',
   
-  attachment: [
+//   attachment: [
 
-    // 'res://CV.pdf'
-  //  'file://CV.pdf',
-  //  ' this.doc ',
-  //  this.doc.CV.pdf , 
-    // this.personalDatas,
+//     // 'res://CV.pdf'
+//   //  'file://CV.pdf',
+//   //  ' this.doc ',
+//   //  this.doc.CV.pdf , 
+//     // this.personalDatas,
 
 
-  ],
-subject:'CV ',
-body:this.data ,
+//   ],
+// subject:'CV ',
+// body:this.pdfbody ,
 
  
-isHtml:true
-};
-this.emailComposer.open(email);
+// isHtml:true
+// };
+// this.emailComposer.open(email);
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  // var mail = {
+  //   to: "",
+  //   subject: 'CV',
+  //   body: 'Mirsis Bilgi Teknolojileri '
+  // }
+  
+  
+  
+  
+  this.timeOut(this.pdfbody);
+  
+  
+  
+  
+  
+//     var docDefinition = {
+//       content: [
+//         { text: "CV" + "\n\n", style: 'header' },
+//         {
+//           table: {
+//             style: 'centeronly',
+//             widths: ['*', '*', '*', '*', '*', '*', '*'],
+//             body:
+//             this.pdfbody,
+//           }
+//         },
+       
+       
+//       ],
+//       styles: {
+//         header: {
+//           fontSize: 22,
+//           alignment: 'center',
+//           bold: true,
+//         },
+//         centeronly: {
+//           alignment: 'center',
+//         }
+//       }
+//     };
+  
+// console.log("1");
+ 
+//   var pdfdocument =docDefinition;
+//   console.log("2");
+//   const pdfDocGenerator = pdfMake.createPdf(pdfdocument);
+//   console.log("3");
+//   pdfMake.createPdf(pdfdocument).download();
+//  // console.log("pdf  " + pdfDocGenerator);
+ 
+//   pdfDocGenerator.getBase64((data) => {
+//     this.emailComposer.open({
+//       to: 'emircanuzel95@gmail.com',
+//       subject: 'CV UYGULAMASI',
+//       body: 'MBT ',
+//       attachments: data ,
+//       isHtml: true 
+    
+//     });
+//   })
+
+  
+//   console.log("4");
+
+ 
+
+
+
+
+ 
+
 
 
 }
