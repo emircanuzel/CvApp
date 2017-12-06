@@ -168,16 +168,16 @@ var HomePage = (function () {
     HomePage.prototype.generatePDF = function (tableContent, tableContent2, tableContent3, tableContent4, tableContent5) {
         var docDefinition = {
             content: [
-                { text: 'Kişisel Bilgiler ', style: 'baslik' },
-                { text: tableContent, style: 'header' },
-                { text: 'Eğitim Bilgileri ' + "\n" + "\n", style: 'baslik' },
-                { text: tableContent2, style: 'header' },
-                { text: 'İş Bilgileri ' + "\n" + "\n", style: 'baslik' },
-                { text: tableContent3, style: 'header' },
-                { text: 'Proje Bilgileri ' + "\n" + "\n", style: 'baslik' },
-                { text: tableContent4, style: 'header' },
-                { text: 'Sosyal ' + "\n" + "\n", style: 'baslik' },
-                { text: tableContent5, style: 'header' },
+                { text: tableContent + "\n" + "\n", style: 'baslik' },
+                { text: this.kisisel, style: 'header' },
+                { text: "\n" + tableContent2 + "\n" + "\n", style: 'baslik' },
+                { text: this.egitim, style: 'header' },
+                { text: tableContent3 + "\n" + "\n", style: 'baslik' },
+                { text: this.is, style: 'header' },
+                { text: tableContent4 + "\n" + "\n", style: 'baslik' },
+                { text: this.proje, style: 'header' },
+                { text: tableContent5 + "\n" + "\n", style: 'baslik' },
+                { text: this.sosyal, style: 'header' },
             ],
             styles: {
                 header: {
@@ -193,21 +193,26 @@ var HomePage = (function () {
         return docDefinition;
     };
     HomePage.prototype.openOnayla = function () {
+        var durum = 0;
+        var durum2 = 0;
+        var durum3 = 0;
+        var durum4 = 0;
+        var durum5 = 0;
         // console.log(this.personalDatas);
         // console.log(this.educationDatas);
         // console.log(this.socialDatas);
         // console.log(this.workDatas);
         // console.log(this.projectDatas);
         // console.log(this.photoDatas);
-        this.kisisel = "\n" + "\n" +
-            "Ad: " + this.personalDatas.Ad + "\n" +
-            "Soyad: " + this.personalDatas.Soyad + "\n" +
-            "TC no: " + this.personalDatas.TCno + "\n" +
-            "Dogum Tarihi: " + this.personalDatas.DTarih + "\n" +
-            "Adres: " + this.personalDatas.Adres + "\n" +
-            "Cinsiyet: " + this.personalDatas.Cinsiyet + "\n" +
-            "Telefon no: " + this.personalDatas.Telno + "\n" +
-            "Mail: " + this.personalDatas.Mail + "\n" + "\n" + "\n";
+        // this.kisisel= "\n"+"\n"+
+        // "Ad: "+this.personalDatas.Ad+"\n"+
+        // "Soyad: "+this.personalDatas.Soyad+"\n"+
+        // "TC no: "+ this.personalDatas.TCno+"\n"+
+        // "Dogum Tarihi: "+ this.personalDatas.DTarih+"\n"+
+        // "Adres: "+ this.personalDatas.Adres+"\n"+
+        // "Cinsiyet: "+ this.personalDatas.Cinsiyet+"\n"+
+        // "Telefon no: "+ this.personalDatas.Telno+"\n"+
+        // "Mail: "+ this.personalDatas.Mail+"\n"+"\n"+"\n"
         //  this.egitim="Lise Adi: "+ this.educationDatas.LAd+"\n"+
         //  "Lise Türü: "+ this.educationDatas.LTürü+"\n"+
         //  "Baslangic Tarihi: "+ this.educationDatas.LBaTarih+"\n"+
@@ -262,6 +267,39 @@ var HomePage = (function () {
         // "GitHub: "+ this.socialDatas.GitHub+"\n"+
         // "Instagram: "+ this.socialDatas.Instagram+"\n"+
         // "Hobiler: "+ this.socialDatas.Hobiler
+        this.kisisel = "";
+        if (this.personalDatas.Ad != null && this.personalDatas.Ad != '') {
+            this.kisisel = this.kisisel + "Ad: " + this.personalDatas.Ad + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.Soyad != null && this.personalDatas.Soyad != '') {
+            this.kisisel = this.kisisel + "Soyad: " + this.personalDatas.Soyad + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.TCno != null && this.personalDatas.TCno != '') {
+            this.kisisel = this.kisisel + "TC no: " + this.personalDatas.TCno + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.DTarih != null && this.personalDatas.DTarih != '') {
+            this.kisisel = this.kisisel + "Dogum Tarihi: " + this.personalDatas.DTarih + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.Adres != null && this.personalDatas.Adres != '') {
+            this.kisisel = this.kisisel + "Adres: " + this.personalDatas.Adres + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.Cinsiyet != null && this.personalDatas.Cinsiyet != '') {
+            this.kisisel = this.kisisel + "Cinsiyet: " + this.personalDatas.Cinsiyet + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.Telno != null && this.personalDatas.Telno != '') {
+            this.kisisel = this.kisisel + "Telefon no: " + this.personalDatas.Telno + "\n";
+            durum = 1;
+        }
+        if (this.personalDatas.Mail != null && this.personalDatas.Mail != '') {
+            this.kisisel = this.kisisel + "Mail: " + this.personalDatas.Mail + "\n";
+            durum = 1;
+        }
         this.egitim = "";
         if (this.educationDatas.LAd != null && this.educationDatas.LAd != '') {
             this.egitim = this.egitim + "Lise Adi: " + this.educationDatas.LAd + "\n" +
@@ -269,6 +307,7 @@ var HomePage = (function () {
                 "Baslangic Tarihi: " + this.educationDatas.LBaTarih + "\n" +
                 "Bitis Tarihi: " + this.educationDatas.LBiTarih + "\n" +
                 "Lise Ortalamasi: " + this.educationDatas.LOrtalama + "\n" + "\n";
+            durum2 = 1;
         }
         if (this.educationDatas.UAd != null && this.educationDatas.UAd != '') {
             this.egitim = this.egitim + "Universite Adi: " + this.educationDatas.UAd + "\n" +
@@ -276,12 +315,14 @@ var HomePage = (function () {
                 "Baslangic Tarihi: " + this.educationDatas.UBaTarih + "\n" +
                 "Bitis Tarihi: " + this.educationDatas.UBiTarih + "\n" +
                 "Universite Ortalamasi: " + this.educationDatas.UOrtalama + "\n" + "\n";
+            durum2 = 1;
         }
         if (this.educationDatas.YAd != null && this.educationDatas.YAd != '') {
             this.egitim = this.egitim + "Yüksek Lisans Adi: " + this.educationDatas.YAd + "\n" +
                 "Yüksek Lisans Türü: " + this.educationDatas.YTürü + "\n" +
                 "Baslangic Tarihi: " + this.educationDatas.YBaTarih + "\n" +
                 "Bitis Tarihi: " + this.educationDatas.YBiTarih + "\n" + "\n" + "\n";
+            durum2 = 1;
         }
         this.is = "";
         if (this.workDatas.SAd != null && this.workDatas.SAd != '') {
@@ -291,6 +332,7 @@ var HomePage = (function () {
                 "Pozisyonu: " + this.workDatas.FPozisyon + "\n" +
                 "Is Tanimi: " + this.workDatas.Tanım + "\n" +
                 "Sirketin Bulundugu Il: " + this.workDatas.Il + "\n" + "\n";
+            durum3 = 1;
         }
         if (this.workDatas.SAd2 != null && this.workDatas.SAd2 != '') {
             this.is = this.is + "Sirket Adi: " + this.workDatas.SAd2 + "\n" +
@@ -299,6 +341,7 @@ var HomePage = (function () {
                 "Pozisyonu: " + this.workDatas.FPozisyon2 + "\n" +
                 "Is Tanimi: " + this.workDatas.Tanım2 + "\n" +
                 "Sirketin Bulundugu Il: " + this.workDatas.Il2 + "\n" + "\n";
+            durum3 = 1;
         }
         if (this.workDatas.SAd3 != null && this.workDatas.SAd3 != '') {
             this.is = this.is + "Sirket Adi: " + this.workDatas.SAd3 + "\n" +
@@ -307,15 +350,19 @@ var HomePage = (function () {
                 "Pozisyonu: " + this.workDatas.FPozisyon3 + "\n" +
                 "Is Tanimi: " + this.workDatas.Tanım3 + "\n" +
                 "Sirketin Bulundugu Il: " + this.workDatas.Il3 + "\n" + "\n";
+            durum3 = 1;
         }
         if (this.workDatas.YDil != null && this.workDatas.YDil != '') {
             this.is = this.is + "Yabanci Dil: " + this.workDatas.YDil + "\n" + "\n";
+            durum3 = 1;
         }
         if (this.workDatas.Yetenek != null && this.workDatas.Yetenek != '') {
             this.is = this.is + "Yetenek: " + this.workDatas.Yetenek + "\n" + "\n";
+            durum3 = 1;
         }
         if (this.workDatas.Sertifika != null && this.workDatas.Sertifika != '') {
             this.is = this.is + "Sertifika: " + this.workDatas.Sertifika + "\n" + "\n";
+            durum3 = 1;
         }
         this.proje = "";
         if (this.projectDatas.PAd != null && this.projectDatas.PAd != '') {
@@ -323,48 +370,75 @@ var HomePage = (function () {
                 "Proje Konusu: " + this.projectDatas.PKonu + "\n" +
                 "Proje Teknolojisi: " + this.projectDatas.PTek + "\n" +
                 "Açiklama: " + this.projectDatas.Açıklama + "\n" + "\n";
+            durum4 = 1;
         }
         if (this.projectDatas.PAd2 != null && this.projectDatas.PAd2 != '') {
             this.proje = this.proje + "Proje Adi: " + this.projectDatas.PAd2 + "\n" +
                 "Proje Konusu: " + this.projectDatas.PKonu2 + "\n" +
                 "Proje Teknolojisi: " + this.projectDatas.PTek2 + "\n" +
                 "Açiklama: " + this.projectDatas.Açıklama2 + "\n" + "\n";
+            durum4 = 1;
         }
         if (this.projectDatas.PAd3 != null && this.projectDatas.PAd3 != '') {
             this.proje = this.proje + "Proje Adi: " + this.projectDatas.PAd3 + "\n" +
                 "Proje Konusu: " + this.projectDatas.PKonu3 + "\n" +
                 "Proje Teknolojisi: " + this.projectDatas.PTek3 + "\n" +
                 "Açiklama: " + this.projectDatas.Açıklama3 + "\n" + "\n";
+            durum4 = 1;
         }
         this.sosyal = "";
         if (this.socialDatas.Skype != null && this.socialDatas.Skype != '') {
             this.sosyal = "Skype: " + this.socialDatas.Skype + "\n";
+            durum5 = 1;
         }
         if (this.socialDatas.Linkedin != null && this.socialDatas.Linkedin != '') {
             this.sosyal = this.sosyal + "Linkedin: " + this.socialDatas.Linkedin + "\n";
+            durum5 = 1;
         }
         if (this.socialDatas.GitHub != null && this.socialDatas.GitHub != '') {
             this.sosyal = this.sosyal + "GitHub: " + this.socialDatas.GitHub + "\n";
+            durum5 = 1;
         }
         if (this.socialDatas.Instagram != null && this.socialDatas.Instagram != '') {
             this.sosyal = this.sosyal + "Instagram: " + this.socialDatas.Instagram + "\n";
+            durum5 = 1;
         }
         if (this.socialDatas.Hobiler != null && this.socialDatas.Hobiler != '') {
             this.sosyal = this.sosyal + "Hobiler: " + this.socialDatas.Hobiler;
+            durum5 = 1;
+        }
+        this.baslik5 = "";
+        if (durum5 == 1) {
+            this.baslik5 = "Sosyal Bilgiler";
+        }
+        this.baslik4 = "";
+        if (durum4 == 1) {
+            this.baslik4 = "Proje Bilgileri";
+        }
+        this.baslik3 = "";
+        if (durum3 == 1) {
+            this.baslik3 = "İş Bilgileri";
+        }
+        this.baslik2 = "";
+        if (durum2 == 1) {
+            this.baslik2 = "Eğitim Bilgileri";
+        }
+        this.baslik = "";
+        if (durum == 1) {
+            this.baslik = "Kişisel Bilgileri";
         }
         console.log(this.sosyal);
-        this.timeOut(this.kisisel, this.egitim, this.is, this.proje, this.sosyal);
+        this.timeOut(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
     };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <!-- <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button> -->\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header text-center>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <!-- <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button> -->\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */]])
 ], HomePage);
 
-var _a, _b, _c;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
