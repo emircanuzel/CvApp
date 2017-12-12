@@ -131,15 +131,42 @@ generatePDF(tableContent,tableContent2,tableContent3,tableContent4,tableContent5
   
   var docDefinition = {
     content: [
-      { text: tableContent+"\n"+"\n", style: 'baslik' },
+     {
+       
+      columns: [
+        {  text: this.personalDatas.Ad+" "+this.personalDatas.Soyad, style: 'header2'},
+        {
+          
+          image: this.photoDatas ,
+          width: 150,
+          height: 150,
+          alignment:'right',
+        
+        },
+
+
+
+        
+      ]
+    
+    },
+      // {
+      //   // if you specify both width and height - image will be stretched
+      //   image: this.photoDatas ,
+      //   width: 150,
+      //   height: 150,
+      //   alignment:'left',
+      //   // text: tableContent+"\n"+"\n", style: 'header2'
+      // },
+     {  text:"\n"+ tableContent+"\n"+"------------------------------------------------------------------------------"+"\n"+"\n", style: 'baslik'},
       { text: this.kisisel, style: 'header' },
-      { text: "\n"+tableContent2+"\n"+"\n", style: 'baslik' },
+      { text: "\n"+tableContent2+"\n"+"------------------------------------------------------------------------------"+"\n"+"\n", style: 'baslik' },
       { text: this.egitim, style: 'header' },
-      { text: tableContent3+"\n"+"\n", style: 'baslik' },
+      { text: tableContent3+"\n"+"------------------------------------------------------------------------------"+"\n"+"\n", style: 'baslik' },
       { text: this.is, style: 'header' },
-      { text: tableContent4+"\n"+"\n", style: 'baslik' },
+      { text: tableContent4+"\n"+"------------------------------------------------------------------------------"+"\n"+"\n", style: 'baslik' },
       { text: this.proje, style: 'header' },
-      { text: tableContent5 +"\n"+"\n", style: 'baslik' },
+      { text: tableContent5 +"\n"+"------------------------------------------------------------------------------"+"\n"+"\n", style: 'baslik' },
       { text: this.sosyal, style: 'header' },
       
       
@@ -149,13 +176,19 @@ generatePDF(tableContent,tableContent2,tableContent3,tableContent4,tableContent5
     styles: {
       header: {
         fontSize: 14,
-       
+        margin: [30, 0, 0, 0],
        
       },
       baslik: {
         fontSize: 16,
         alignment: 'center',
         bold: true
+       
+       
+      },
+      header2: {
+        fontSize: 24,
+        margin: [60, 60, 0, 0],
        
        
       },
@@ -173,14 +206,6 @@ var durum2=0;
 var durum3=0;
 var durum4=0;
 var durum5=0;
-
-
-// console.log(this.personalDatas);
-// console.log(this.educationDatas);
-// console.log(this.socialDatas);
-// console.log(this.workDatas);
-// console.log(this.projectDatas);
-// console.log(this.photoDatas);
 
 // this.kisisel= "\n"+"\n"+
 // "Ad: "+this.personalDatas.Ad+"\n"+
@@ -480,7 +505,7 @@ if (this.socialDatas.GitHub!=null && this.socialDatas.GitHub!=''){
       }
       
 
-console.log(this.sosyal);
+
 
   this.timeOut(this.baslik,this.baslik2,this.baslik3,this.baslik4,this.baslik5);
   

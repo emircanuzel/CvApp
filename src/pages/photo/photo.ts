@@ -17,7 +17,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 export class PhotoPage {
 
 
-  public photos: any;
+   photos: any;
   public base64Image: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController,private alertCtrl: AlertController, private camera: Camera) {
