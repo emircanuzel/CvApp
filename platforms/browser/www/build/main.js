@@ -187,15 +187,15 @@ var HomePage = (function () {
                 //   alignment:'left',
                 //   // text: tableContent+"\n"+"\n", style: 'header2'
                 // },
-                { text: "\n" + tableContent + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n", style: 'baslik' },
+                { text: "\n" + tableContent, style: 'baslik' },
                 { text: this.kisisel, style: 'header' },
-                { text: "\n" + tableContent2 + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n", style: 'baslik' },
+                { text: "\n" + tableContent2, style: 'baslik' },
                 { text: this.egitim, style: 'header' },
-                { text: tableContent3 + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n", style: 'baslik' },
+                { text: tableContent3, style: 'baslik' },
                 { text: this.is, style: 'header' },
-                { text: tableContent4 + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n", style: 'baslik' },
+                { text: tableContent4, style: 'baslik' },
                 { text: this.proje, style: 'header' },
-                { text: tableContent5 + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n", style: 'baslik' },
+                { text: tableContent5, style: 'baslik' },
                 { text: this.sosyal, style: 'header' },
             ],
             styles: {
@@ -222,12 +222,15 @@ var HomePage = (function () {
         var durum3 = 0;
         var durum4 = 0;
         var durum5 = 0;
-        // console.log(this.personalDatas);
-        // console.log(this.educationDatas);
-        // console.log(this.socialDatas);
-        // console.log(this.workDatas);
-        // console.log(this.projectDatas);
-        // console.log(this.photoDatas);
+        if (this.photoDatas == undefined) {
+            console.log("foto yok");
+        }
+        // if(this.photoDatas==null || this.photoDatas=="" && this.photoDatas==undefined){
+        //   console.log("foto yok")
+        // }
+        // else {
+        //   console.log("foto var")
+        // }
         // this.kisisel= "\n"+"\n"+
         // "Ad: "+this.personalDatas.Ad+"\n"+
         // "Soyad: "+this.personalDatas.Soyad+"\n"+
@@ -433,25 +436,26 @@ var HomePage = (function () {
         }
         this.baslik5 = "";
         if (durum5 == 1) {
-            this.baslik5 = "Sosyal Bilgiler";
+            this.baslik5 = "Sosyal Bilgiler" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik4 = "";
         if (durum4 == 1) {
-            this.baslik4 = "Proje Bilgileri";
+            this.baslik4 = "Proje Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik3 = "";
         if (durum3 == 1) {
-            this.baslik3 = "İş Bilgileri";
+            this.baslik3 = "İş Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik2 = "";
         if (durum2 == 1) {
-            this.baslik2 = "Eğitim Bilgileri";
+            this.baslik2 = "Eğitim Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik = "";
         if (durum == 1) {
-            this.baslik = "Kişisel Bilgileri";
+            this.baslik = "Kişisel Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.timeOut(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
+        //console.log(this.photoDatas)
     };
     return HomePage;
 }());

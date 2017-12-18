@@ -71,6 +71,7 @@ var PhotoPage = (function () {
         this.view = view;
         this.alertCtrl = alertCtrl;
         this.camera = camera;
+        this.kontrol = 0;
     }
     PhotoPage.prototype.closeModal = function () {
         var photoData = this.photos;
@@ -84,6 +85,7 @@ var PhotoPage = (function () {
     };
     PhotoPage.prototype.takePhoto = function () {
         var _this = this;
+        this.kontrol = 1;
         var options = {
             quality: 100,
             destinationType: this.camera.DestinationType.DATA_URL,

@@ -19,6 +19,7 @@ export class PhotoPage {
 
    photos: any;
   public base64Image: string;
+  kontrol:any=0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController,private alertCtrl: AlertController, private camera: Camera) {
   }
@@ -39,6 +40,7 @@ export class PhotoPage {
   }
 
  takePhoto() {
+   this.kontrol=1;
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
