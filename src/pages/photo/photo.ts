@@ -26,7 +26,8 @@ export class PhotoPage {
    closeModal(){
 
      const photoData = this.photos;
-    this.view.dismiss(photoData);
+     const kontrol=this.kontrol;
+    this.view.dismiss(photoData,kontrol);
   }
 
   ionViewDidLoad() {

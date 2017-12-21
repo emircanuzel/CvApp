@@ -75,7 +75,8 @@ var PhotoPage = (function () {
     }
     PhotoPage.prototype.closeModal = function () {
         var photoData = this.photos;
-        this.view.dismiss(photoData);
+        var kontrol = this.kontrol;
+        this.view.dismiss(photoData, kontrol);
     };
     PhotoPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad PhotoPage');

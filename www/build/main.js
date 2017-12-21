@@ -90,10 +90,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["vfs"] = __WEBPACK_IMPORTED_MODULE_4_pdfmake_build_vfs_fonts__["pdfMake"].vfs;
 var HomePage = (function () {
-    function HomePage(navCtrl, modal, emailComposer) {
+    function HomePage(navCtrl, modal, emailComposer, alertCtrl) {
         this.navCtrl = navCtrl;
         this.modal = modal;
         this.emailComposer = emailComposer;
+        this.alertCtrl = alertCtrl;
         this.personalDatas = {};
         this.educationDatas = {};
         this.socialDatas = {};
@@ -145,8 +146,9 @@ var HomePage = (function () {
         var _this = this;
         var Foto = this.modal.create('PhotoPage');
         Foto.present();
-        Foto.onDidDismiss(function (photoData) {
+        Foto.onDidDismiss(function (photoData, kontrol) {
             _this.photoDatas = photoData;
+            _this.kontrol = kontrol;
         });
     };
     HomePage.prototype.timeOut = function (upperArr, upperArr2, upperArr3, upperArr4, upperArr5) {
@@ -222,15 +224,6 @@ var HomePage = (function () {
         var durum3 = 0;
         var durum4 = 0;
         var durum5 = 0;
-        if (this.photoDatas == undefined) {
-            console.log("foto yok");
-        }
-        // if(this.photoDatas==null || this.photoDatas=="" && this.photoDatas==undefined){
-        //   console.log("foto yok")
-        // }
-        // else {
-        //   console.log("foto var")
-        // }
         // this.kisisel= "\n"+"\n"+
         // "Ad: "+this.personalDatas.Ad+"\n"+
         // "Soyad: "+this.personalDatas.Soyad+"\n"+
@@ -454,8 +447,38 @@ var HomePage = (function () {
         if (durum == 1) {
             this.baslik = "Kişisel Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
-        this.timeOut(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
-        //console.log(this.photoDatas)
+        if (this.kontrol != 1) {
+            console.log(this.kontrol);
+            this.showAlert1();
+        }
+        else if (this.personalDatas.Ad == undefined || this.personalDatas.Ad == '') {
+            console.log(this.personalDatas.Ad);
+            this.showAlert2();
+        }
+        else if (this.personalDatas.Soyad == undefined || this.personalDatas.Soyad == '') {
+            console.log(this.personalDatas.Soyad);
+            this.showAlert2();
+        }
+        else {
+            this.timeOut(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
+            //console.log(this.photoDatas)
+        }
+    };
+    HomePage.prototype.showAlert1 = function () {
+        var alert = this.alertCtrl.create({
+            title: 'Uyarı!',
+            subTitle: 'Lütfen Fotoğraf ekleyiniz.',
+            buttons: ['Tamam']
+        });
+        alert.present();
+    };
+    HomePage.prototype.showAlert2 = function () {
+        var alert = this.alertCtrl.create({
+            title: 'Uyarı!',
+            subTitle: 'Lütfen Ad Soyad bölümünü doldurunuz.',
+            buttons: ['Tamam']
+        });
+        alert.present();
     };
     return HomePage;
 }());
@@ -463,7 +486,7 @@ HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header text-center>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button>\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, Modal } from 'ionic-angular';
+import { NavController, ModalController, Modal, AlertController } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
 
 
@@ -17,7 +17,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class HomePage {
 
 
-  constructor(public navCtrl: NavController , public modal:ModalController,public emailComposer:EmailComposer) {
+  constructor(public navCtrl: NavController , public modal:ModalController,public emailComposer:EmailComposer,private alertCtrl: AlertController) {
 
   }
     public personalDatas: any = {};
@@ -36,7 +36,7 @@ export class HomePage {
       public baslik3 : string;
       public baslik4 : string;
       public baslik5 : string;
-     
+     public kontrol: any;
       
 
   openModalKisisel(){
@@ -98,8 +98,9 @@ openModalFoto(){
 const Foto = this.modal.create('PhotoPage')
 
     Foto.present();
-    Foto.onDidDismiss((photoData)=> {
+    Foto.onDidDismiss((photoData,kontrol)=> {
   this.photoDatas=photoData;
+  this.kontrol=kontrol;
 });
 
 }
@@ -206,89 +207,6 @@ var durum2=0;
 var durum3=0;
 var durum4=0;
 var durum5=0;
-
-
-if(this.photoDatas==undefined){
-
-  console.log("foto yok")
-}
-// if(this.photoDatas==null || this.photoDatas=="" && this.photoDatas==undefined){
-
-//   console.log("foto yok")
-// }
-// else {
-
-//   console.log("foto var")
-// }
-// this.kisisel= "\n"+"\n"+
-// "Ad: "+this.personalDatas.Ad+"\n"+
-// "Soyad: "+this.personalDatas.Soyad+"\n"+
-// "TC no: "+ this.personalDatas.TCno+"\n"+
-// "Dogum Tarihi: "+ this.personalDatas.DTarih+"\n"+
-// "Adres: "+ this.personalDatas.Adres+"\n"+
-// "Cinsiyet: "+ this.personalDatas.Cinsiyet+"\n"+
-// "Telefon no: "+ this.personalDatas.Telno+"\n"+
-// "Mail: "+ this.personalDatas.Mail+"\n"+"\n"+"\n"
-
- 
-
-//  this.egitim="Lise Adi: "+ this.educationDatas.LAd+"\n"+
-//  "Lise Türü: "+ this.educationDatas.LTürü+"\n"+
-//  "Baslangic Tarihi: "+ this.educationDatas.LBaTarih+"\n"+
-//  "Bitis Tarihi: "+ this.educationDatas.LBiTarih+"\n"+
-// "Lise Ortalamasi: "+ this.educationDatas.LOrtalama+"\n"+"\n"+
-//  "Universite Adi: "+ this.educationDatas.UAd+"\n"+
-//  "Universite Bölümü: "+ this.educationDatas.UTürü+"\n"+
-//  "Baslangic Tarihi: "+ this.educationDatas.UBaTarih+"\n"+
-//  "Bitis Tarihi: "+ this.educationDatas.UBiTarih+"\n"+
-//  "Universite Ortalamasi: "+ this.educationDatas.UOrtalama+"\n"+"\n"+
-//  "Yüksek Lisans Adi: "+ this.educationDatas.YAd+"\n"+
-// "Yüksek Lisans Türü: "+ this.educationDatas.YTürü+"\n"+
-//  "Baslangic Tarihi: "+ this.educationDatas.YBaTarih+"\n"+
-//  "Bitis Tarihi: "+ this.educationDatas.YBiTarih+"\n"+"\n"+"\n"
-
-//  this.is= "\n"+"\n"+
-//  "Sirket Adi: "+ this.workDatas.SAd+"\n"+
-//  "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih+"\n"+
-// "Bitis Tarihi: "+ this.workDatas.BiTarih+"\n"+
-// "Pozisyonu: "+ this.workDatas.FPozisyon+"\n"+
-// "Is Tanimi: "+ this.workDatas.Tanım+"\n"+
-// "Sirketin Bulundugu Il: "+ this.workDatas.Il+"\n"+"\n"+
-// "Sirket Adi: "+ this.workDatas.SAd2+"\n"+
-// "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2+"\n"+
-// "Bitis Tarihi: "+ this.workDatas.BiTarih2+"\n"+
-// "Pozisyonu: "+ this.workDatas.FPozisyon2+"\n"+
-//  "Is Tanimi: "+ this.workDatas.Tanım2+"\n"+
-// "Sirketin Bulundugu Il: "+ this.workDatas.Il2+"\n"+"\n"+
-// "Sirket Adi: "+ this.workDatas.SAd3+"\n"+
-// "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3+"\n"+
-// "Bitis Tarihi: "+ this.workDatas.BiTarih3+"\n"+
-// "Pozisyonu: "+ this.workDatas.FPozisyon3+"\n"+
-// "Is Tanimi: "+ this.workDatas.Tanım3+"\n"+
-// "Sirketin Bulundugu Il: "+ this.workDatas.Il3+"\n"+"\n"+
-// "Yabanci Dil: "+ this.workDatas.YDil+"\n"+
-// "Yetenek: "+ this.workDatas.Yetenek+"\n"+
-// "Sertifika: "+ this.workDatas.Sertifika+"\n"+"\n"+"\n"
-
-// this.proje="Proje Adi: "+ this.projectDatas.PAd+"\n"+
-// "Proje Konusu: "+ this.projectDatas.PKonu+"\n"+
-// "Proje Teknolojisi: "+ this.projectDatas.PTek+"\n"+
-// "Açiklama: "+ this.projectDatas.Açıklama+"\n"+"\n"+  
-// "Proje Adi: "+ this.projectDatas.PAd2+"\n"+
-// "Proje Konusu: "+ this.projectDatas.PKonu2+"\n"+
-// "Proje Teknolojisi: "+ this.projectDatas.PTek2+"\n"+
-//  "Açiklama: "+ this.projectDatas.Açıklama2+"\n"+"\n"+  
-// "Proje Adi: "+ this.projectDatas.PAd3+"\n"+
-// "Proje Konusu: "+ this.projectDatas.PKonu3+"\n"+
-// "Proje Teknolojisi: "+ this.projectDatas.PTek3+"\n"+
-// "Açiklama: "+ this.projectDatas.Açıklama3+"\n"+"\n"+"\n"
-
-// this.sosyal="\n"+"\n"+
-//  "Skype: "+ this.socialDatas.Skype+"\n"+
-// "Linkedin: "+ this.socialDatas.Linkedin+"\n"+
-// "GitHub: "+ this.socialDatas.GitHub+"\n"+
-// "Instagram: "+ this.socialDatas.Instagram+"\n"+
-// "Hobiler: "+ this.socialDatas.Hobiler
 
 this.kisisel="";
 if(this.personalDatas.Ad!=null && this.personalDatas.Ad!='' ){
@@ -518,12 +436,45 @@ if (this.socialDatas.GitHub!=null && this.socialDatas.GitHub!=''){
       }
       
 
+      if(this.kontrol!=1){
+        console.log(this.kontrol)
+        this.showAlert1();
+      }
+      else if(this.personalDatas.Ad==undefined || this.personalDatas.Ad==''){
+        console.log(this.personalDatas.Ad)
+      this.showAlert2();
+      }
+      else if(this.personalDatas.Soyad==undefined || this.personalDatas.Soyad==''){
+        console.log(this.personalDatas.Soyad)
+      this.showAlert2();
+      }
+      else {
 
 
-  this.timeOut(this.baslik,this.baslik2,this.baslik3,this.baslik4,this.baslik5);
-  //console.log(this.photoDatas)
+        this.timeOut(this.baslik,this.baslik2,this.baslik3,this.baslik4,this.baslik5);
+        //console.log(this.photoDatas)
+      }
+
   
     
+}
+
+showAlert1() {
+  let alert = this.alertCtrl.create({
+    title: 'Uyarı!',
+    subTitle: 'Lütfen Fotoğraf ekleyiniz.',
+    buttons: ['Tamam']
+  });
+  alert.present();
+}
+
+showAlert2() {
+  let alert = this.alertCtrl.create({
+    title: 'Uyarı!',
+    subTitle: 'Lütfen Ad Soyad bölümünü doldurunuz.',
+    buttons: ['Tamam']
+  });
+  alert.present();
 }
 
 }
