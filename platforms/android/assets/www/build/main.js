@@ -90,17 +90,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["vfs"] = __WEBPACK_IMPORTED_MODULE_4_pdfmake_build_vfs_fonts__["pdfMake"].vfs;
 var HomePage = (function () {
-    function HomePage(navCtrl, modal, emailComposer, alertCtrl) {
+    function HomePage(navCtrl, modal, emailComposer, alertCtrl, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.modal = modal;
         this.emailComposer = emailComposer;
         this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
         this.personalDatas = {};
         this.educationDatas = {};
         this.socialDatas = {};
         this.workDatas = {};
         this.projectDatas = {};
         this.photoDatas = {};
+        this.durum = 0;
+        this.durum2 = 0;
+        this.durum3 = 0;
+        this.durum4 = 0;
+        this.durum5 = 0;
     }
     HomePage.prototype.openModalKisisel = function () {
         var _this = this;
@@ -151,22 +157,22 @@ var HomePage = (function () {
             _this.kontrol = kontrol;
         });
     };
-    HomePage.prototype.timeOut = function (upperArr, upperArr2, upperArr3, upperArr4, upperArr5) {
-        var _this = this;
-        // var now = moment().format("DD.MM.YYYY");
-        var pdfdocument = this.generatePDF(upperArr, upperArr2, upperArr3, upperArr4, upperArr5);
-        var pdfDocGenerator = __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument);
-        __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument).download();
-        pdfDocGenerator.getBase64(function (data) {
-            _this.emailComposer.open({
-                to: 'emircanuzel95@gmail.com',
-                subject: 'CV UYGULAMASI',
-                body: ' Mirsis Bilgi Teknolojileri ',
-                attachments: ['base64:CV.pdf//' + data],
-                isHtml: true
-            });
-        });
-    };
+    // timeOut(upperArr,upperArr2,upperArr3,upperArr4,upperArr5) {
+    //   // var now = moment().format("DD.MM.YYYY");
+    //   this.presentLoading();
+    //   var pdfdocument = this.generatePDF(upperArr,upperArr2,upperArr3,upperArr4,upperArr5);
+    //   const pdfDocGenerator = pdfMake.createPdf(pdfdocument);
+    //   pdfMake.createPdf(pdfdocument).download();
+    //   pdfDocGenerator.getBase64((data) => {
+    //     this.emailComposer.open({
+    //       to: 'emircanuzel95@gmail.com',
+    //       subject: 'CV UYGULAMASI',
+    //       body: ' Mirsis Bilgi Teknolojileri ',
+    //       attachments: ['base64:CV.pdf//' + data],
+    //       isHtml: true
+    //     });
+    //   })
+    // }
     HomePage.prototype.generatePDF = function (tableContent, tableContent2, tableContent3, tableContent4, tableContent5) {
         var docDefinition = {
             content: [
@@ -181,14 +187,6 @@ var HomePage = (function () {
                         },
                     ]
                 },
-                // {
-                //   // if you specify both width and height - image will be stretched
-                //   image: this.photoDatas ,
-                //   width: 150,
-                //   height: 150,
-                //   alignment:'left',
-                //   // text: tableContent+"\n"+"\n", style: 'header2'
-                // },
                 { text: "\n" + tableContent, style: 'baslik' },
                 { text: this.kisisel, style: 'header' },
                 { text: "\n" + tableContent2, style: 'baslik' },
@@ -219,232 +217,28 @@ var HomePage = (function () {
         return docDefinition;
     };
     HomePage.prototype.openOnayla = function () {
-        var durum = 0;
-        var durum2 = 0;
-        var durum3 = 0;
-        var durum4 = 0;
-        var durum5 = 0;
-        // this.kisisel= "\n"+"\n"+
-        // "Ad: "+this.personalDatas.Ad+"\n"+
-        // "Soyad: "+this.personalDatas.Soyad+"\n"+
-        // "TC no: "+ this.personalDatas.TCno+"\n"+
-        // "Dogum Tarihi: "+ this.personalDatas.DTarih+"\n"+
-        // "Adres: "+ this.personalDatas.Adres+"\n"+
-        // "Cinsiyet: "+ this.personalDatas.Cinsiyet+"\n"+
-        // "Telefon no: "+ this.personalDatas.Telno+"\n"+
-        // "Mail: "+ this.personalDatas.Mail+"\n"+"\n"+"\n"
-        //  this.egitim="Lise Adi: "+ this.educationDatas.LAd+"\n"+
-        //  "Lise Türü: "+ this.educationDatas.LTürü+"\n"+
-        //  "Baslangic Tarihi: "+ this.educationDatas.LBaTarih+"\n"+
-        //  "Bitis Tarihi: "+ this.educationDatas.LBiTarih+"\n"+
-        // "Lise Ortalamasi: "+ this.educationDatas.LOrtalama+"\n"+"\n"+
-        //  "Universite Adi: "+ this.educationDatas.UAd+"\n"+
-        //  "Universite Bölümü: "+ this.educationDatas.UTürü+"\n"+
-        //  "Baslangic Tarihi: "+ this.educationDatas.UBaTarih+"\n"+
-        //  "Bitis Tarihi: "+ this.educationDatas.UBiTarih+"\n"+
-        //  "Universite Ortalamasi: "+ this.educationDatas.UOrtalama+"\n"+"\n"+
-        //  "Yüksek Lisans Adi: "+ this.educationDatas.YAd+"\n"+
-        // "Yüksek Lisans Türü: "+ this.educationDatas.YTürü+"\n"+
-        //  "Baslangic Tarihi: "+ this.educationDatas.YBaTarih+"\n"+
-        //  "Bitis Tarihi: "+ this.educationDatas.YBiTarih+"\n"+"\n"+"\n"
-        //  this.is= "\n"+"\n"+
-        //  "Sirket Adi: "+ this.workDatas.SAd+"\n"+
-        //  "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih+"\n"+
-        // "Bitis Tarihi: "+ this.workDatas.BiTarih+"\n"+
-        // "Pozisyonu: "+ this.workDatas.FPozisyon+"\n"+
-        // "Is Tanimi: "+ this.workDatas.Tanım+"\n"+
-        // "Sirketin Bulundugu Il: "+ this.workDatas.Il+"\n"+"\n"+
-        // "Sirket Adi: "+ this.workDatas.SAd2+"\n"+
-        // "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih2+"\n"+
-        // "Bitis Tarihi: "+ this.workDatas.BiTarih2+"\n"+
-        // "Pozisyonu: "+ this.workDatas.FPozisyon2+"\n"+
-        //  "Is Tanimi: "+ this.workDatas.Tanım2+"\n"+
-        // "Sirketin Bulundugu Il: "+ this.workDatas.Il2+"\n"+"\n"+
-        // "Sirket Adi: "+ this.workDatas.SAd3+"\n"+
-        // "Baslangic-Bitis Tarihi: "+ this.workDatas.BaTarih3+"\n"+
-        // "Bitis Tarihi: "+ this.workDatas.BiTarih3+"\n"+
-        // "Pozisyonu: "+ this.workDatas.FPozisyon3+"\n"+
-        // "Is Tanimi: "+ this.workDatas.Tanım3+"\n"+
-        // "Sirketin Bulundugu Il: "+ this.workDatas.Il3+"\n"+"\n"+
-        // "Yabanci Dil: "+ this.workDatas.YDil+"\n"+
-        // "Yetenek: "+ this.workDatas.Yetenek+"\n"+
-        // "Sertifika: "+ this.workDatas.Sertifika+"\n"+"\n"+"\n"
-        // this.proje="Proje Adi: "+ this.projectDatas.PAd+"\n"+
-        // "Proje Konusu: "+ this.projectDatas.PKonu+"\n"+
-        // "Proje Teknolojisi: "+ this.projectDatas.PTek+"\n"+
-        // "Açiklama: "+ this.projectDatas.Açıklama+"\n"+"\n"+  
-        // "Proje Adi: "+ this.projectDatas.PAd2+"\n"+
-        // "Proje Konusu: "+ this.projectDatas.PKonu2+"\n"+
-        // "Proje Teknolojisi: "+ this.projectDatas.PTek2+"\n"+
-        //  "Açiklama: "+ this.projectDatas.Açıklama2+"\n"+"\n"+  
-        // "Proje Adi: "+ this.projectDatas.PAd3+"\n"+
-        // "Proje Konusu: "+ this.projectDatas.PKonu3+"\n"+
-        // "Proje Teknolojisi: "+ this.projectDatas.PTek3+"\n"+
-        // "Açiklama: "+ this.projectDatas.Açıklama3+"\n"+"\n"+"\n"
-        // this.sosyal="\n"+"\n"+
-        //  "Skype: "+ this.socialDatas.Skype+"\n"+
-        // "Linkedin: "+ this.socialDatas.Linkedin+"\n"+
-        // "GitHub: "+ this.socialDatas.GitHub+"\n"+
-        // "Instagram: "+ this.socialDatas.Instagram+"\n"+
-        // "Hobiler: "+ this.socialDatas.Hobiler
-        this.kisisel = "";
-        if (this.personalDatas.Ad != null && this.personalDatas.Ad != '') {
-            this.kisisel = this.kisisel + "Ad: " + this.personalDatas.Ad + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.Soyad != null && this.personalDatas.Soyad != '') {
-            this.kisisel = this.kisisel + "Soyad: " + this.personalDatas.Soyad + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.TCno != null && this.personalDatas.TCno != '') {
-            this.kisisel = this.kisisel + "TC no: " + this.personalDatas.TCno + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.DTarih != null && this.personalDatas.DTarih != '') {
-            this.kisisel = this.kisisel + "Dogum Tarihi: " + this.personalDatas.DTarih + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.Adres != null && this.personalDatas.Adres != '') {
-            this.kisisel = this.kisisel + "Adres: " + this.personalDatas.Adres + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.Cinsiyet != null && this.personalDatas.Cinsiyet != '') {
-            this.kisisel = this.kisisel + "Cinsiyet: " + this.personalDatas.Cinsiyet + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.Telno != null && this.personalDatas.Telno != '') {
-            this.kisisel = this.kisisel + "Telefon no: " + this.personalDatas.Telno + "\n";
-            durum = 1;
-        }
-        if (this.personalDatas.Mail != null && this.personalDatas.Mail != '') {
-            this.kisisel = this.kisisel + "Mail: " + this.personalDatas.Mail + "\n";
-            durum = 1;
-        }
-        this.egitim = "";
-        if (this.educationDatas.LAd != null && this.educationDatas.LAd != '') {
-            this.egitim = this.egitim + "Lise Adi: " + this.educationDatas.LAd + "\n" +
-                "Lise Türü: " + this.educationDatas.LTürü + "\n" +
-                "Baslangic Tarihi: " + this.educationDatas.LBaTarih + "\n" +
-                "Bitis Tarihi: " + this.educationDatas.LBiTarih + "\n" +
-                "Lise Ortalamasi: " + this.educationDatas.LOrtalama + "\n" + "\n";
-            durum2 = 1;
-        }
-        if (this.educationDatas.UAd != null && this.educationDatas.UAd != '') {
-            this.egitim = this.egitim + "Universite Adi: " + this.educationDatas.UAd + "\n" +
-                "Universite Bölümü: " + this.educationDatas.UTürü + "\n" +
-                "Baslangic Tarihi: " + this.educationDatas.UBaTarih + "\n" +
-                "Bitis Tarihi: " + this.educationDatas.UBiTarih + "\n" +
-                "Universite Ortalamasi: " + this.educationDatas.UOrtalama + "\n" + "\n";
-            durum2 = 1;
-        }
-        if (this.educationDatas.YAd != null && this.educationDatas.YAd != '') {
-            this.egitim = this.egitim + "Yüksek Lisans Adi: " + this.educationDatas.YAd + "\n" +
-                "Yüksek Lisans Türü: " + this.educationDatas.YTürü + "\n" +
-                "Baslangic Tarihi: " + this.educationDatas.YBaTarih + "\n" +
-                "Bitis Tarihi: " + this.educationDatas.YBiTarih + "\n" + "\n" + "\n";
-            durum2 = 1;
-        }
-        this.is = "";
-        if (this.workDatas.SAd != null && this.workDatas.SAd != '') {
-            this.is = "Sirket Adi: " + this.workDatas.SAd + "\n" +
-                "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih + "\n" +
-                "Bitis Tarihi: " + this.workDatas.BiTarih + "\n" +
-                "Pozisyonu: " + this.workDatas.FPozisyon + "\n" +
-                "Is Tanimi: " + this.workDatas.Tanım + "\n" +
-                "Sirketin Bulundugu Il: " + this.workDatas.Il + "\n" + "\n";
-            durum3 = 1;
-        }
-        if (this.workDatas.SAd2 != null && this.workDatas.SAd2 != '') {
-            this.is = this.is + "Sirket Adi: " + this.workDatas.SAd2 + "\n" +
-                "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih2 + "\n" +
-                "Bitis Tarihi: " + this.workDatas.BiTarih2 + "\n" +
-                "Pozisyonu: " + this.workDatas.FPozisyon2 + "\n" +
-                "Is Tanimi: " + this.workDatas.Tanım2 + "\n" +
-                "Sirketin Bulundugu Il: " + this.workDatas.Il2 + "\n" + "\n";
-            durum3 = 1;
-        }
-        if (this.workDatas.SAd3 != null && this.workDatas.SAd3 != '') {
-            this.is = this.is + "Sirket Adi: " + this.workDatas.SAd3 + "\n" +
-                "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih3 + "\n" +
-                "Bitis Tarihi: " + this.workDatas.BiTarih3 + "\n" +
-                "Pozisyonu: " + this.workDatas.FPozisyon3 + "\n" +
-                "Is Tanimi: " + this.workDatas.Tanım3 + "\n" +
-                "Sirketin Bulundugu Il: " + this.workDatas.Il3 + "\n" + "\n";
-            durum3 = 1;
-        }
-        if (this.workDatas.YDil != null && this.workDatas.YDil != '') {
-            this.is = this.is + "Yabanci Dil: " + this.workDatas.YDil + "\n" + "\n";
-            durum3 = 1;
-        }
-        if (this.workDatas.Yetenek != null && this.workDatas.Yetenek != '') {
-            this.is = this.is + "Yetenek: " + this.workDatas.Yetenek + "\n" + "\n";
-            durum3 = 1;
-        }
-        if (this.workDatas.Sertifika != null && this.workDatas.Sertifika != '') {
-            this.is = this.is + "Sertifika: " + this.workDatas.Sertifika + "\n" + "\n";
-            durum3 = 1;
-        }
-        this.proje = "";
-        if (this.projectDatas.PAd != null && this.projectDatas.PAd != '') {
-            this.proje = "Proje Adi: " + this.projectDatas.PAd + "\n" +
-                "Proje Konusu: " + this.projectDatas.PKonu + "\n" +
-                "Proje Teknolojisi: " + this.projectDatas.PTek + "\n" +
-                "Açiklama: " + this.projectDatas.Açıklama + "\n" + "\n";
-            durum4 = 1;
-        }
-        if (this.projectDatas.PAd2 != null && this.projectDatas.PAd2 != '') {
-            this.proje = this.proje + "Proje Adi: " + this.projectDatas.PAd2 + "\n" +
-                "Proje Konusu: " + this.projectDatas.PKonu2 + "\n" +
-                "Proje Teknolojisi: " + this.projectDatas.PTek2 + "\n" +
-                "Açiklama: " + this.projectDatas.Açıklama2 + "\n" + "\n";
-            durum4 = 1;
-        }
-        if (this.projectDatas.PAd3 != null && this.projectDatas.PAd3 != '') {
-            this.proje = this.proje + "Proje Adi: " + this.projectDatas.PAd3 + "\n" +
-                "Proje Konusu: " + this.projectDatas.PKonu3 + "\n" +
-                "Proje Teknolojisi: " + this.projectDatas.PTek3 + "\n" +
-                "Açiklama: " + this.projectDatas.Açıklama3 + "\n" + "\n";
-            durum4 = 1;
-        }
-        this.sosyal = "";
-        if (this.socialDatas.Skype != null && this.socialDatas.Skype != '') {
-            this.sosyal = "Skype: " + this.socialDatas.Skype + "\n";
-            durum5 = 1;
-        }
-        if (this.socialDatas.Linkedin != null && this.socialDatas.Linkedin != '') {
-            this.sosyal = this.sosyal + "Linkedin: " + this.socialDatas.Linkedin + "\n";
-            durum5 = 1;
-        }
-        if (this.socialDatas.GitHub != null && this.socialDatas.GitHub != '') {
-            this.sosyal = this.sosyal + "GitHub: " + this.socialDatas.GitHub + "\n";
-            durum5 = 1;
-        }
-        if (this.socialDatas.Instagram != null && this.socialDatas.Instagram != '') {
-            this.sosyal = this.sosyal + "Instagram: " + this.socialDatas.Instagram + "\n";
-            durum5 = 1;
-        }
-        if (this.socialDatas.Hobiler != null && this.socialDatas.Hobiler != '') {
-            this.sosyal = this.sosyal + "Hobiler: " + this.socialDatas.Hobiler;
-            durum5 = 1;
-        }
+        var _this = this;
+        this.kisiselbölüm();
+        this.egitimisbölüm();
+        this.projesosyalbölüm();
         this.baslik5 = "";
-        if (durum5 == 1) {
+        if (this.durum5 == 1) {
             this.baslik5 = "Sosyal Bilgiler" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik4 = "";
-        if (durum4 == 1) {
+        if (this.durum4 == 1) {
             this.baslik4 = "Proje Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik3 = "";
-        if (durum3 == 1) {
+        if (this.durum3 == 1) {
             this.baslik3 = "İş Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik2 = "";
-        if (durum2 == 1) {
+        if (this.durum2 == 1) {
             this.baslik2 = "Eğitim Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         this.baslik = "";
-        if (durum == 1) {
+        if (this.durum == 1) {
             this.baslik = "Kişisel Bilgileri" + "\n" + "------------------------------------------------------------------------------" + "\n" + "\n";
         }
         if (this.kontrol != 1) {
@@ -460,8 +254,168 @@ var HomePage = (function () {
             this.showAlert2();
         }
         else {
-            this.timeOut(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
+            // this.presentLoading();
+            //this.timeOut(this.baslik,this.baslik2,this.baslik3,this.baslik4,this.baslik5);
+            this.presentLoading();
+            var pdfdocument = this.generatePDF(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
+            var pdfDocGenerator = __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument);
+            __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument).download();
+            pdfDocGenerator.getBase64(function (data) {
+                _this.emailComposer.open({
+                    to: 'emircanuzel95@gmail.com',
+                    subject: 'CV UYGULAMASI',
+                    body: ' Mirsis Bilgi Teknolojileri ',
+                    attachments: ['base64:CV.pdf//' + data],
+                    isHtml: true
+                });
+            });
             //console.log(this.photoDatas)
+        }
+    };
+    HomePage.prototype.kisiselbölüm = function () {
+        this.kisisel = "";
+        if (this.personalDatas.Ad != null && this.personalDatas.Ad != '') {
+            this.kisisel = this.kisisel + "Ad: " + this.personalDatas.Ad + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.Soyad != null && this.personalDatas.Soyad != '') {
+            this.kisisel = this.kisisel + "Soyad: " + this.personalDatas.Soyad + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.TCno != null && this.personalDatas.TCno != '') {
+            this.kisisel = this.kisisel + "TC no: " + this.personalDatas.TCno + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.DTarih != null && this.personalDatas.DTarih != '') {
+            this.kisisel = this.kisisel + "Dogum Tarihi: " + this.personalDatas.DTarih + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.Adres != null && this.personalDatas.Adres != '') {
+            this.kisisel = this.kisisel + "Adres: " + this.personalDatas.Adres + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.Cinsiyet != null && this.personalDatas.Cinsiyet != '') {
+            this.kisisel = this.kisisel + "Cinsiyet: " + this.personalDatas.Cinsiyet + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.Telno != null && this.personalDatas.Telno != '') {
+            this.kisisel = this.kisisel + "Telefon no: " + this.personalDatas.Telno + "\n";
+            this.durum = 1;
+        }
+        if (this.personalDatas.Mail != null && this.personalDatas.Mail != '') {
+            this.kisisel = this.kisisel + "Mail: " + this.personalDatas.Mail + "\n";
+            this.durum = 1;
+        }
+    };
+    HomePage.prototype.egitimisbölüm = function () {
+        this.egitim = "";
+        if (this.educationDatas.LAd != null && this.educationDatas.LAd != '') {
+            this.egitim = this.egitim + "Lise Adi: " + this.educationDatas.LAd + "\n" +
+                "Lise Türü: " + this.educationDatas.LTürü + "\n" +
+                "Baslangic Tarihi: " + this.educationDatas.LBaTarih + "\n" +
+                "Bitis Tarihi: " + this.educationDatas.LBiTarih + "\n" +
+                "Lise Ortalamasi: " + this.educationDatas.LOrtalama + "\n" + "\n";
+            this.durum2 = 1;
+        }
+        if (this.educationDatas.UAd != null && this.educationDatas.UAd != '') {
+            this.egitim = this.egitim + "Universite Adi: " + this.educationDatas.UAd + "\n" +
+                "Universite Bölümü: " + this.educationDatas.UTürü + "\n" +
+                "Baslangic Tarihi: " + this.educationDatas.UBaTarih + "\n" +
+                "Bitis Tarihi: " + this.educationDatas.UBiTarih + "\n" +
+                "Universite Ortalamasi: " + this.educationDatas.UOrtalama + "\n" + "\n";
+            this.durum2 = 1;
+        }
+        if (this.educationDatas.YAd != null && this.educationDatas.YAd != '') {
+            this.egitim = this.egitim + "Yüksek Lisans Adi: " + this.educationDatas.YAd + "\n" +
+                "Yüksek Lisans Türü: " + this.educationDatas.YTürü + "\n" +
+                "Baslangic Tarihi: " + this.educationDatas.YBaTarih + "\n" +
+                "Bitis Tarihi: " + this.educationDatas.YBiTarih + "\n" + "\n" + "\n";
+            this.durum2 = 1;
+        }
+        this.is = "";
+        if (this.workDatas.SAd != null && this.workDatas.SAd != '') {
+            this.is = "Sirket Adi: " + this.workDatas.SAd + "\n" +
+                "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih + "\n" +
+                "Bitis Tarihi: " + this.workDatas.BiTarih + "\n" +
+                "Pozisyonu: " + this.workDatas.FPozisyon + "\n" +
+                "Is Tanimi: " + this.workDatas.Tanım + "\n" +
+                "Sirketin Bulundugu Il: " + this.workDatas.Il + "\n" + "\n";
+            this.durum3 = 1;
+        }
+        if (this.workDatas.SAd2 != null && this.workDatas.SAd2 != '') {
+            this.is = this.is + "Sirket Adi: " + this.workDatas.SAd2 + "\n" +
+                "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih2 + "\n" +
+                "Bitis Tarihi: " + this.workDatas.BiTarih2 + "\n" +
+                "Pozisyonu: " + this.workDatas.FPozisyon2 + "\n" +
+                "Is Tanimi: " + this.workDatas.Tanım2 + "\n" +
+                "Sirketin Bulundugu Il: " + this.workDatas.Il2 + "\n" + "\n";
+            this.durum3 = 1;
+        }
+        if (this.workDatas.SAd3 != null && this.workDatas.SAd3 != '') {
+            this.is = this.is + "Sirket Adi: " + this.workDatas.SAd3 + "\n" +
+                "Baslangic-Bitis Tarihi: " + this.workDatas.BaTarih3 + "\n" +
+                "Bitis Tarihi: " + this.workDatas.BiTarih3 + "\n" +
+                "Pozisyonu: " + this.workDatas.FPozisyon3 + "\n" +
+                "Is Tanimi: " + this.workDatas.Tanım3 + "\n" +
+                "Sirketin Bulundugu Il: " + this.workDatas.Il3 + "\n" + "\n";
+            this.durum3 = 1;
+        }
+        if (this.workDatas.YDil != null && this.workDatas.YDil != '') {
+            this.is = this.is + "Yabanci Dil: " + this.workDatas.YDil + "\n" + "\n";
+            this.durum3 = 1;
+        }
+        if (this.workDatas.Yetenek != null && this.workDatas.Yetenek != '') {
+            this.is = this.is + "Yetenek: " + this.workDatas.Yetenek + "\n" + "\n";
+            this.durum3 = 1;
+        }
+        if (this.workDatas.Sertifika != null && this.workDatas.Sertifika != '') {
+            this.is = this.is + "Sertifika: " + this.workDatas.Sertifika + "\n" + "\n";
+            this.durum3 = 1;
+        }
+    };
+    HomePage.prototype.projesosyalbölüm = function () {
+        this.proje = "";
+        if (this.projectDatas.PAd != null && this.projectDatas.PAd != '') {
+            this.proje = "Proje Adi: " + this.projectDatas.PAd + "\n" +
+                "Proje Konusu: " + this.projectDatas.PKonu + "\n" +
+                "Proje Teknolojisi: " + this.projectDatas.PTek + "\n" +
+                "Açiklama: " + this.projectDatas.Açıklama + "\n" + "\n";
+            this.durum4 = 1;
+        }
+        if (this.projectDatas.PAd2 != null && this.projectDatas.PAd2 != '') {
+            this.proje = this.proje + "Proje Adi: " + this.projectDatas.PAd2 + "\n" +
+                "Proje Konusu: " + this.projectDatas.PKonu2 + "\n" +
+                "Proje Teknolojisi: " + this.projectDatas.PTek2 + "\n" +
+                "Açiklama: " + this.projectDatas.Açıklama2 + "\n" + "\n";
+            this.durum4 = 1;
+        }
+        if (this.projectDatas.PAd3 != null && this.projectDatas.PAd3 != '') {
+            this.proje = this.proje + "Proje Adi: " + this.projectDatas.PAd3 + "\n" +
+                "Proje Konusu: " + this.projectDatas.PKonu3 + "\n" +
+                "Proje Teknolojisi: " + this.projectDatas.PTek3 + "\n" +
+                "Açiklama: " + this.projectDatas.Açıklama3 + "\n" + "\n";
+            this.durum4 = 1;
+        }
+        this.sosyal = "";
+        if (this.socialDatas.Skype != null && this.socialDatas.Skype != '') {
+            this.sosyal = "Skype: " + this.socialDatas.Skype + "\n";
+            this.durum5 = 1;
+        }
+        if (this.socialDatas.Linkedin != null && this.socialDatas.Linkedin != '') {
+            this.sosyal = this.sosyal + "Linkedin: " + this.socialDatas.Linkedin + "\n";
+            this.durum5 = 1;
+        }
+        if (this.socialDatas.GitHub != null && this.socialDatas.GitHub != '') {
+            this.sosyal = this.sosyal + "GitHub: " + this.socialDatas.GitHub + "\n";
+            this.durum5 = 1;
+        }
+        if (this.socialDatas.Instagram != null && this.socialDatas.Instagram != '') {
+            this.sosyal = this.sosyal + "Instagram: " + this.socialDatas.Instagram + "\n";
+            this.durum5 = 1;
+        }
+        if (this.socialDatas.Hobiler != null && this.socialDatas.Hobiler != '') {
+            this.sosyal = this.sosyal + "Hobiler: " + this.socialDatas.Hobiler;
+            this.durum5 = 1;
         }
     };
     HomePage.prototype.showAlert1 = function () {
@@ -480,13 +434,20 @@ var HomePage = (function () {
         });
         alert.present();
     };
+    HomePage.prototype.presentLoading = function () {
+        var loader = this.loadingCtrl.create({
+            content: "Please wait...",
+            duration: 2000
+        });
+        loader.present();
+    };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/'<ion-header text-center>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      CV APP\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n <ion-card>\n\n  <ion-card-header text-center>\n\n   CV Başlıkları\n\n  </ion-card-header>\n\n\n\n<br><br>\n\n \n\n    <button ion-item (click)="openModalKisisel()" >\n\n      <ion-icon name="ios-person" item-start></ion-icon>\n\n      Kişisel\n\n    </button>\n\n<br>    \n\n    <button ion-item (click)="openModalEgitim()" >\n\n      <ion-icon name="ios-school" item-start></ion-icon>\n\n      Eğitim\n\n    </button>\n\n<br>\n\n      <button ion-item (click)="openModalIs()">\n\n      <ion-icon name="ios-briefcase" item-start></ion-icon>\n\n      İş\n\n    </button>\n\n<br>\n\n<button ion-item (click)="openModalProje()">\n\n      <ion-icon name="ios-folder-open" item-start></ion-icon>\n\n      Projeler\n\n    </button>\n\n    <br>\n\n        <button ion-item (click)="openModalSosyal()">\n\n      <ion-icon name="ios-information-circle" item-start></ion-icon>\n\n      Sosyal\n\n    </button>\n\n    <br>\n\n     <button ion-item (click)="openModalFoto()">\n\n      <ion-icon name="ios-camera" item-start></ion-icon>\n\n      Fotoğraf\n\n    </button>\n\n<br>\n\n \n\n\n\n\n\n \n\n</ion-card>\n\n  <button ion-button block  (click)="openOnayla()">Onayla</button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
@@ -618,7 +579,7 @@ var MyApp = (function () {
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\Emircan.Uzel\Desktop\CvApp\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
