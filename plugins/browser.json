@@ -16,9 +16,6 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
-        "cordova-plugin-email-composer": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
@@ -29,6 +26,9 @@
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-email-composer": {
             "PACKAGE_NAME": "io.ionic.starter"
         }
     },

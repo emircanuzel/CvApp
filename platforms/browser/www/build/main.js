@@ -157,22 +157,23 @@ var HomePage = (function () {
             _this.kontrol = kontrol;
         });
     };
-    // timeOut(upperArr,upperArr2,upperArr3,upperArr4,upperArr5) {
-    //   // var now = moment().format("DD.MM.YYYY");
-    //   this.presentLoading();
-    //   var pdfdocument = this.generatePDF(upperArr,upperArr2,upperArr3,upperArr4,upperArr5);
-    //   const pdfDocGenerator = pdfMake.createPdf(pdfdocument);
-    //   pdfMake.createPdf(pdfdocument).download();
-    //   pdfDocGenerator.getBase64((data) => {
-    //     this.emailComposer.open({
-    //       to: 'emircanuzel95@gmail.com',
-    //       subject: 'CV UYGULAMASI',
-    //       body: ' Mirsis Bilgi Teknolojileri ',
-    //       attachments: ['base64:CV.pdf//' + data],
-    //       isHtml: true
-    //     });
-    //   })
-    // }
+    HomePage.prototype.timeOut = function (upperArr, upperArr2, upperArr3, upperArr4, upperArr5) {
+        var _this = this;
+        // var now = moment().format("DD.MM.YYYY");
+        //this.presentLoading();
+        var pdfdocument = this.generatePDF(upperArr, upperArr2, upperArr3, upperArr4, upperArr5);
+        var pdfDocGenerator = __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument);
+        __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument).download();
+        pdfDocGenerator.getBase64(function (data) {
+            _this.emailComposer.open({
+                to: 'emircanuzel95@gmail.com',
+                subject: 'CV UYGULAMASI',
+                body: ' Mirsis Bilgi Teknolojileri ',
+                attachments: ['base64:CV.pdf//' + data],
+                isHtml: true
+            });
+        });
+    };
     HomePage.prototype.generatePDF = function (tableContent, tableContent2, tableContent3, tableContent4, tableContent5) {
         var docDefinition = {
             content: [
@@ -217,7 +218,6 @@ var HomePage = (function () {
         return docDefinition;
     };
     HomePage.prototype.openOnayla = function () {
-        var _this = this;
         this.kisiselbölüm();
         this.egitimisbölüm();
         this.projesosyalbölüm();
@@ -254,21 +254,8 @@ var HomePage = (function () {
             this.showAlert2();
         }
         else {
-            // this.presentLoading();
-            //this.timeOut(this.baslik,this.baslik2,this.baslik3,this.baslik4,this.baslik5);
             this.presentLoading();
-            var pdfdocument = this.generatePDF(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
-            var pdfDocGenerator = __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument);
-            __WEBPACK_IMPORTED_MODULE_3_pdfmake_build_pdfmake__["createPdf"](pdfdocument).download();
-            pdfDocGenerator.getBase64(function (data) {
-                _this.emailComposer.open({
-                    to: 'emircanuzel95@gmail.com',
-                    subject: 'CV UYGULAMASI',
-                    body: ' Mirsis Bilgi Teknolojileri ',
-                    attachments: ['base64:CV.pdf//' + data],
-                    isHtml: true
-                });
-            });
+            this.timeOut(this.baslik, this.baslik2, this.baslik3, this.baslik4, this.baslik5);
             //console.log(this.photoDatas)
         }
     };
