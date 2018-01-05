@@ -3,6 +3,7 @@ import { NavController, ModalController, Modal, AlertController, LoadingControll
 import { EmailComposer } from '@ionic-native/email-composer';
 
 
+
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -43,7 +44,7 @@ export class HomePage {
     public durum4=0;
     public durum5=0;
 
-  
+
 
   openModalKisisel(){
 
