@@ -499,6 +499,19 @@ presentLoading() {
   });
   loader.present();
 }
+
+openGeriBildirim(){
+  let email = {
+    to: 'mobileapp@mirsis.com.tr',
+    subject: 'CVApp Hk.',
+    body: '',
+    isHtml: true
+  }
+
+  this.emailComposer.open(email);
+
+  
+}
   
 
 }
